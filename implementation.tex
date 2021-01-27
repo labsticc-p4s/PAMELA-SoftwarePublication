@@ -1,0 +1,33 @@
+The PAMELA implementation is available online. \footnote {https://github.com/openflexo-team/pamela}
+
+\subsection{Exposed API at design-time}
+
+The model-code integration we advocate requires facilities to encode metadata in the source code. This requires an annotation-enabled language. Such a language supports the attribute-oriented programming if its grammar allows adding custom declarative tags to annotate standard program elements. Java programming language is a good candidate, as it supports annotations.
+
+The PAMELA API exposed to the developer mainly consists of : 1) a set of annotations; and 2) a set of unimplemented Java interfaces exposing required features.
+
+The package \texttt{org.openflexo.pamela.annotations} package exposes the set of annotations which were presented in Subsection \ref{sub:DesignTime}.
+
+The package \texttt{org.openflexo.pamela} contains the following feature-related java interfaces:
+\begin{itemize}
+    \item \texttt{AccessibleProxyObject} is the interface that PAMELA objects should extend in order to benefit from base features such as generic default implementation, containment management, notification, object graph comparison and diff/merge, visiting patterns, etc.
+    \item \texttt{CloneableProxyObject} exposes features related to cloning.
+    \item \texttt{DeletableProxyObject} exposes features related to deletion management.
+    \item \texttt{SpecifiableProxyObject} exposes dynamic assertion checking features in the context of JML (contract management) use. 
+\end{itemize}
+
+% Generic design patterns API, used in the context of aspect programming is exposed in \texttt{org.openflexo.pamela.patterns} package. A plug-in architecture allows to enrich model with some specific design pattern. Some basic design patterns are released with PAMELA 1.6.x in the context of security (Authenticator, Authorization, SingleAccessPoint, Owner).
+
+\subsection{PAMELA interpreter}
+
+The package \texttt{org.openflexo.pamela.factory} contains the PAMELA interpreter implementation. The core of the interpreter is implemented in the class \texttt{ProxyMethodHandler}.
+
+From a technical point of view, PAMELA implementation uses the \emph{javassist} reflection library (see \cite{shigueru2000}) which provides the \texttt{MethodHandler} mechanism, which is a way to override the java dynamic binding. Invoking a method on an object which is part of a PAMELA model, causes the real implementation to be called when existing (more precisely dispatch code execution between all provided implementations), or the required interpretation according to underlying model to be executed. This provides also an extension point allowing to instrument the code, which is used for other features such as undo/redo stack management, and assertion checking at run-time (support for Design by Contract, aka JML).
+
+The PAMELA framework is a 100\% pure java (\textgreater 1.5), compilable by a classical java compiler and executable in a classical Java Virtual Machine.
+
+% Rajouter un paragraphe sur le fait que PAMELA est une implementation du MOP (meta object protocol) ?
+
+% Is it the good place for following links ?
+%https://pamela.openflexo.org
+%https://github.com/openflexo-team/pamela
