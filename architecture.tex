@@ -1,12 +1,9 @@
-Figure \ref{fig:PamelaVision} summarizes the PAMELA architecture.  Basically, it is composed of one design time component (the PAMELA metamodel, plus a number of predefined annotations) presented in the next section and one run-time component (the PAMELA interpreter), described in the section \ref{sub:RunTime}.
+PAMELA is composed of one design time component (the PAMELA metamodel, plus a number of predefined annotations) presented in the next section and one run-time component (the PAMELA interpreter), described in the section \ref{sub:RunTime}.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1.0 \columnwidth]{PamelaVisionV2.pdf}
-    \caption{PAMELA approach for modelling}
-    \label{fig:PamelaVision}
-\end{figure}
+\subsection{Installation}
+\label{sub:installation}
 
+\todo{Maybe a word on how to install.}
 
 \begin{center}
 \begin{figure}
@@ -32,46 +29,46 @@ Figure \ref{fig:PamelaVision} summarizes the PAMELA architecture.  Basically, it
 \subsection{Design time}
 \label{sub:DesignTime}
 
-The PAMELA metamodel is depicted in Figure  \ref{fig:PamelaMetaModel}, and allows, though the use of annotations, the definition of of \emph{simple} UML-like models directly on the code.
+The PAMELA metamodel is depicted in Figure  \ref{fig:PamelaMetaModel}, and allows, though the use of annotations, the definition of \emph{simple} UML-like models directly on the code.
 
-A \texttt{PAMELAModel} is defined as a set of references to \texttt{ModelEntity}. A \texttt{ModelEntity} reflects a concept and is encoded in a java \texttt{interface}. PAMELA metamodel allows multiple inheritance: thus \texttt{ModelEntity} may define a set of parent entities. Note that reification of \texttt{ModelEntity} is performed in a java \texttt{interface} (and not a class), which only defines API whithout any implementation for methods. 
-Note that \emph{ModelEntities} may declare \emph{ImplementationClasses}, which will be responsible for providing custom code implementing domain or application specific behaviour. A partially implemented \texttt{abstract} java \texttt{class} may be defined as partial base implementation (conforms to implemented interface).
+A \texttt{PAMELAModel} is defined as a set of references to \texttt{ModelEntity}. A \texttt{ModelEntity} reflects a concept and is encoded in a Java \texttt{interface}. PAMELA metamodel allows multiple inheritance: thus \texttt{ModelEntity} may define a set of parent entities. Note that reification of \texttt{ModelEntity} is performed in a Java \texttt{interface} (and not a class), which only defines API whithout any implementation for methods. 
+Note that \emph{ModelEntities} may declare \emph{ImplementationClasses}, which will be responsible for providing custom code implementing domain or application specific behaviour. A partially implemented \texttt{abstract} Java \texttt{class} may be defined as partial base implementation (conforms to implemented interface).
 
 A \texttt{ModelEntity} also defines some properties, encoded as \texttt{ModelProperty}. A \texttt{ModelProperty} is identified by a name, a cardinality (simple or multiple) and a type, which can be a reference to another \texttt{ModelEntity}, or a Java type (a primitive or an arbitrary complex Java type). Depending on its cardinality, a \texttt{ModelProperty} is bound to a set of methods reflecting use of property.
 \begin{itemize}
-    \item A \emph{read-only single property} will define read-access of its value using a \emph{getter} (a java method defined in java interface taking no argument and returning desired value).
-    \item A \emph{read-write single property} will define a \emph{getter} and a \emph{setter} (a java method taking value to be set as unique argument)
-    \item A \emph{read-write multiple property} will define a \emph{getter}, an \emph{adder} (a java method taking value to be added as unique argument), a \emph{remover} (a java method taking value to be removed as unique argument), and may define additional methods for extended features such as reindexing for example.
+    \item A \emph{read-only single property} will define read-access of its value using a \emph{getter} (a Java method defined in Java interface taking no argument and returning desired value).
+    \item A \emph{read-write single property} will define a \emph{getter} and a \emph{setter} (a Java method taking value to be set as unique argument).
+    \item A \emph{read-write multiple property} will define a \emph{getter}, an \emph{adder} (a Java method taking value to be added as unique argument), a \emph{remover} (a Java method taking value to be removed as unique argument), and may define additional methods for extended features such as reindexing for example.
 \end{itemize}
 
 
-To summarize, in the following we list the most common java annotations used in the context of \texttt{ModelEntity} and \texttt{ModelProperty} definitions:
+To summarize, in the following we list the most common Java annotations used in the context of \texttt{ModelEntity} and \texttt{ModelProperty} definitions:
 
 \begin{itemize}
     \item \texttt{@ModelEntity}: tag annotating \texttt{interface} as \emph{ModelEntity}. May declare an abstract entity.
-    \item \texttt{@ImplementationClass}: tag annotating \emph{ModelEntity} \texttt{interface} and precising abstract java \texttt{class} to be used as base implementation.
+    \item \texttt{@ImplementationClass}: tag annotating \emph{ModelEntity} \texttt{interface} and precising abstract Java \texttt{class} to be used as base implementation.
     \item \texttt{@Implementation}: tag annotating a partial implementation (abstract inner \texttt{class} defined in implemented \texttt{interface}), and used in the context of multiple inheritance.
-    \item \texttt{@Getter(String)}: tag annotating method as unique getter for implicit \emph{ModelProperty} whose identifier is the declared String value. May also declares cardinality, enventual inverse property, default value and some other features.
+    \item \texttt{@Getter(String)}: tag annotating method as unique getter for implicit \emph{ModelProperty} whose identifier is the declared String value. May also declares cardinality, eventual inverse property, default value and some other features.
     \item \texttt{@Setter(String)}: tag annotating method as unique setter for implicit \emph{ModelProperty} whose identifier is the declared String value.
     \item \texttt{@Adder(String)}: tag annotating method as unique adder for implicit multiple cardinality \emph{ModelProperty} whose identifier is the declared String value.
     \item \texttt{@Remover(String)}: tag annotating method as unique remover for implicit multiple cardinality \emph{ModelProperty} whose identifier is the declared String value.
     \item \texttt{@Reindexer(String)}: tag annotating method as unique reindexer for implicit multiple cardinality \emph{ModelProperty} whose identifier is the declared String value.
-    \item \texttt{@Initializer}: tag annotating a method used as a constructor for related \emph{ModelEntity}
-   \item \texttt{@Deleter}: tag annotating a method used as explicit destructor for related \emph{ModelEntity}
-    \item \texttt{@Finder(String,String)}: tag annotating method as a fetching request for a given \emph{ModelProperty} with a given attribute
-    \item \texttt{@CloningStrategy}: allows to customize cloning strategy for a given \emph{ModelProperty}
-    \item \texttt{@Embedded}: allows to declare a given \emph{ModelProperty} as embedded according to PAMELA semantics
-    \item \texttt{@Imports} and \texttt{@Imports}: allows to declare some entities to be included in PAMELA model
-    \item \texttt{@XMLElement} and \texttt{@XMLAttribute}: used to specify XML serialization for PAMELA instances
+    \item \texttt{@Initializer}: tag annotating a method used as a constructor for related \emph{ModelEntity}.
+   \item \texttt{@Deleter}: tag annotating a method used as explicit destructor for related \emph{ModelEntity}.
+    \item \texttt{@Finder(String,String)}: tag annotating method as a fetching request for a given \emph{ModelProperty} with a given attribute.
+    \item \texttt{@CloningStrategy}: allows to customize cloning strategy for a given \emph{ModelProperty}.
+    \item \texttt{@Embedded}: allows to declare a given \emph{ModelProperty} as embedded according to PAMELA semantics.
+    \item \texttt{@Imports} and \texttt{@Imports}: allows to declare some entities to be included in PAMELA model.
+    \item \texttt{@XMLElement} and \texttt{@XMLAttribute}: used to specify XML serialization for PAMELA instances.
     
 \end{itemize}
 
  \subsection{Runtime}
  \label{sub:RunTime}
  
- The aforementioned models are executed at runtime as a combination of two components: 1) plain java byte-code, as the result of the basic compilation of source code; and 2) an embedded PAMELA interpreter, executing semantics reflected by \emph{ModelEntity} and \emph{ModelProperty}  declarations (together with custom annotations where available).
+ The aforementioned models are executed at runtime as a combination of two components: 1) plain Java byte-code, as the result of the basic compilation of source code; and 2) an embedded PAMELA interpreter, executing semantics reflected by \emph{ModelEntity} and \emph{ModelProperty}  declarations (together with custom annotations where available).
 
-The main idea for the approach is to override java dynamic binding. Invoking a method on an object which is part of a PAMELA model, causes the real implementation to be called when existing (more precisely dispatch code execution between all provided implementations), or the required interpretation according to the underlying model to be executed. 
+The main idea for the approach is to override Java dynamic binding. Invoking a method on an object which is part of a PAMELA model, causes the real implementation to be called when existing (more precisely dispatch code execution between all provided implementations), or the required interpretation according to the underlying model to be executed. 
  
 The PAMELA interpreter will intercept any method call for all instances of \emph{ModelEntity} and conditionally branches code execution.
  \begin{itemize}
@@ -81,7 +78,9 @@ The PAMELA interpreter will intercept any method call for all instances of \emph
  
 This general scheme provides also an extension point allowing to instrument the code. This extension point is used in order to integrate other features such as notification management, undo/redo stack management, assertion checking at run-time (support for \emph{Design by Contract}, aka JML), and dynamic code weaving in the context of \emph{Aspect Programming}.
 
-PAMELA model at runtime is computed dynamically, working on the classpath of launched java application, and starting from a simple java interface (or a collection of java interfaces) which is/are PAMELA-annotated. From a mathematical point of view, internal representation of the underlying model is a graph whose vertex are PAMELA \emph{ModelEntities} (annotated java interface), and edges are either inheritance links or reference links (a property whose type is another \emph{ModelEntity}. \mytexttt{@Imports} and \mytexttt{@Import} annotations allows to include some other \emph{ModelEntities} in the model. On the contrary, an annotation attribute \mytexttt{@Getter(...ignoreType=true)} allows to ignore the link. In that context, PAMELA model computation is a graph closure computation, starting from a collection of vertices\footnote{Model closure computation on-the-fly provides an interesting approach to deal with model fragmentation.}. A PAMELA model at runtime is represented by a \mytexttt{ModelContext}.
+PAMELA model at runtime is computed dynamically, working on the classpath of launched Java application, and starting from a simple Java interface (or a collection of Java interfaces) which is/are PAMELA-annotated. From a mathematical point of view, internal representation of the underlying model is a graph whose vertex are PAMELA \emph{ModelEntities} (annotated Java interface), and edges are either inheritance links or reference links (a property whose type is another \emph{ModelEntity}. \mytexttt{@Imports} and \mytexttt{@Import} annotations allows to include some other \emph{ModelEntities} in the model. On the contrary, an annotation attribute \mytexttt{@Getter(...ignoreType=true)} allows to ignore the link. In that context, PAMELA model computation is a graph closure computation, starting from a collection of vertices.
+%\footnote{Model closure computation on-the-fly provides an interesting approach to deal with model fragmentation.} 
+A PAMELA model at runtime is represented by a \mytexttt{ModelContext}.
 
 PAMELA instances (instances of \emph{ModelEntity}) are handled though the use of \mytexttt{ModelFactory}, which is instantiated from a \mytexttt{ModelContext}.
 
@@ -89,10 +88,10 @@ PAMELA instances (instances of \emph{ModelEntity}) are handled though the use of
 %This composition offers many benefits: 
 %\begin{itemize}
 %    \item Strong coupling between model and code
-%    \item Strong typing is kept, and required checks are performed by the java compiler
+%    \item Strong typing is kept, and required checks are performed by the Java compiler
 %    \item PAMELA framework provides interpretation of model@runtime
-%    \item No need to generate POJO (plain old java objects), as their execution follow the standard semantics (less code, less bugs)
-%    \item Custom implementation are provided if needed, using classical java extension points
+%    \item No need to generate POJO (plain old Java objects), as their execution follow the standard semantics (less code, less bugs)
+%    \item Custom implementation are provided if needed, using classical Java extension points
 %    \item It offers a way to intercept method calls and instrument the code
 %    \item Assertions checking at runtime
 %    \item Dynamic code weaving at runtime (aspect programming without compilation)
@@ -100,14 +99,14 @@ PAMELA instances (instances of \emph{ModelEntity}) are handled though the use of
 
 \subsection{Additional Features}
 
-PAMELA supports a number of advanced programming features (some already mentioned) such as:  multiple inheritance and traits, containment management, cloning, fine-grained notifications management, object graph comparison and diff/merge, visiting patterns, clipboard management, validation, support for \emph{design by contract} by integrating the Java Modeling Language (JML), Metaprogramming, Aspect Oriented Programming.
+\ab{Programmers may already reuse} a number of advanced programming features (some already mentioned) such as:  multiple inheritance and traits, containment management, cloning, fine-grained notifications management, object graph comparison and diff/merge, visiting patterns, clipboard management, validation, support for \emph{design by contract} by integrating assertions from Java Modeling Language (JML), Metaprogramming, Aspect Oriented Programming. \ab{Experimented programmers may extend PAMELA defining new annotations.}
 
 
-%A strong interest of the approach is that the model is encoded in java, and must be compiled. It forces the java compiler to perform required checks %for a PAMELA model encoded in a strong typed program. Execution semantics of model is fully compatible with Java semantics. Many validation rules %are automatically performed through classical java compilation, independently of underlying PAMELA execution semantics.
+%A strong interest of the approach is that the model is encoded in Java, and must be compiled. It forces the Java compiler to perform required checks %for a PAMELA model encoded in a strong typed program. Execution semantics of model is fully compatible with Java semantics. Many validation rules %are automatically performed through classical Java compilation, independently of underlying PAMELA execution semantics.
 
 \subsection{Example}
 
-Listing \ref{lst:model} shows a very basic model with two entities: \emph{Book} and \emph{Library}. Entity \emph{Book} defines two read-write single properties \emph{title} and \emph{ISBN} with single cardinality and with \texttt{String} type. Entity \emph{Book} also defines a constructor with initial \emph{title} value. Entity \emph{Library} defines a read-write multiple properties \emph{books} referencing \emph{Book} instances. Note that this code is sufficient to execute the model, while no additional line of code is required (only java interfaces and API methods are declared here). 
+Listing \ref{lst:model} shows a very basic model with two entities: \emph{Book} and \emph{Library}. Entity \emph{Book} defines two read-write single properties \emph{title} and \emph{ISBN} with single cardinality and with \texttt{String} type. Entity \emph{Book} also defines a constructor with initial \emph{title} value. Entity \emph{Library} defines a read-write multiple properties \emph{books} referencing \emph{Book} instances. Note that this code is sufficient to execute the model, while no additional line of code is required (only Java interfaces and API methods are declared here). 
 
 %\begin{figure}
 %    \centering
@@ -179,9 +178,9 @@ myLibrary.addToBooks(anOtherBook);
  %   \label{fig:ExecutingPamelaModel}
 %\end{figure}
 
-The first line of code instantiates a \texttt{ModelContext} by introspecting and computing the closure of concepts graph obtained while starting from \texttt{Library} entity and following \texttt{parentEntities} and \texttt{properties} relationships. This call builds at runtime a \emph{PAMELAModel}, while dynamically following links reflected by compiled byte-code. A factory \texttt{ModelFactory} is then instantiated using that \texttt{ModelContext}, allowing to create \emph{Library} and \emph{Book} instances.
+The lines 3--4 instantiates a \texttt{ModelContext} by introspecting and computing the closure of concepts graph obtained while starting from \texttt{Library} entity and following \texttt{parentEntities} and \texttt{properties} relationships. This call builds at runtime a \emph{PAMELAModel}, while dynamically following links reflected by compiled byte-code. A factory \texttt{ModelFactory} is then instantiated using that \texttt{ModelContext}, allowing to create \emph{Library} and \emph{Book} instances.
 
-Custom code can be easily added to this model as we show in Listing \ref{lst:custom}. It shows how to integrate custom code to the fully interpreted \emph{Book} entity described above. The partial custom implementation is offered by a partial class (note the \texttt{abstract} keyword), declared in the annotation header of model entity. Custom implementations are defined using classical java implementation/overrides scheme. Here we define the implementation of the \texttt{read()} method, which has no annotation (and thus, can not be processed by the PAMELA framework), and also the implementation of a custom getter for \emph{title}, returning a default value when no value is defined for that property. Note that this implementation references a default interpretated implementation (call to \texttt{performSuperGetter(String)} method).
+Custom code can be easily added to this model as we show in Listing \ref{lst:custom}. It shows how to integrate custom code to the fully interpreted \emph{Book} entity described above. The partial custom implementation is offered by a partial class (note the \texttt{abstract} keyword), declared in the annotation header of model entity. Custom implementations are defined using classical Java implementation/overrides scheme. Here we define the implementation of the \texttt{read()} method, which has no annotation (and thus, can not be processed by the PAMELA framework), and also the implementation of a custom getter for \emph{title}, returning a default value when no value is defined for that property. Note that this implementation references a default interpretated implementation (call to \texttt{performSuperGetter(String)} method).
 
 %\begin{figure}
 %    \centering

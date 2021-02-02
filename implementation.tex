@@ -1,4 +1,4 @@
-The PAMELA implementation is available online. \footnote {https://github.com/openflexo-team/pamela}
+The PAMELA implementation is available online\footnote {\url{https://github.com/openflexo-team/pamela}}.
 
 \subsection{Exposed API at design-time}
 
@@ -8,7 +8,7 @@ The PAMELA API exposed to the developer mainly consists of : 1) a set of annotat
 
 The package \texttt{org.openflexo.pamela.annotations} package exposes the set of annotations which were presented in Subsection \ref{sub:DesignTime}.
 
-The package \texttt{org.openflexo.pamela} contains the following feature-related java interfaces:
+The package \texttt{org.openflexo.pamela} contains the following feature-related Java interfaces:
 \begin{itemize}
     \item \texttt{AccessibleProxyObject} is the interface that PAMELA objects should extend in order to benefit from base features such as generic default implementation, containment management, notification, object graph comparison and diff/merge, visiting patterns, etc.
     \item \texttt{CloneableProxyObject} exposes features related to cloning.
@@ -22,9 +22,14 @@ The package \texttt{org.openflexo.pamela} contains the following feature-related
 
 The package \texttt{org.openflexo.pamela.factory} contains the PAMELA interpreter implementation. The core of the interpreter is implemented in the class \texttt{ProxyMethodHandler}.
 
-From a technical point of view, PAMELA implementation uses the \emph{javassist} reflection library (see \cite{shigueru2000}) which provides the \texttt{MethodHandler} mechanism, which is a way to override the java dynamic binding. Invoking a method on an object which is part of a PAMELA model, causes the real implementation to be called when existing (more precisely dispatch code execution between all provided implementations), or the required interpretation according to underlying model to be executed. This provides also an extension point allowing to instrument the code, which is used for other features such as undo/redo stack management, and assertion checking at run-time (support for Design by Contract, aka JML).
+From a technical point of view, PAMELA implementation uses the \emph{javassist} reflection library (see \cite{shigueru2000}) which provides the \texttt{MethodHandler} mechanism, which is a way to override the Java dynamic binding. Invoking a method on an object which is part of a PAMELA model, causes the real implementation to be called when existing (more precisely dispatch code execution between all provided implementations), or the required interpretation according to underlying model to be executed. This provides also an extension point allowing to instrument the code, which is used for other features such as undo/redo stack management, and assertion checking at run-time (support for Design by Contract, aka JML).
 
-The PAMELA framework is a 100\% pure java (\textgreater 1.5), compilable by a classical java compiler and executable in a classical Java Virtual Machine.
+The PAMELA framework is a 100\% pure Java (\textgreater 1.5), compilable by a classical Java compiler and executable in a classical Java Virtual Machine.
+
+\subsection{PAMELA code base figures}
+
+\todo{Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
+
 
 % Rajouter un paragraphe sur le fait que PAMELA est une implementation du MOP (meta object protocol) ?
 
