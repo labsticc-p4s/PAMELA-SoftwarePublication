@@ -42,7 +42,7 @@ A \texttt{ModelEntity} also defines some properties, encoded as \texttt{ModelPro
 \end{itemize}
 
 
-To summarize, in the following we list the most common Java annotations used in the context of \texttt{ModelEntity} and \texttt{ModelProperty} definitions:
+In the following we list the most common Java annotations used in the context of \texttt{ModelEntity} and \texttt{ModelProperty} definitions:
 
 \begin{itemize}
     \item \texttt{@ModelEntity}: tag annotating \texttt{interface} as \emph{ModelEntity}. May declare an abstract entity.
@@ -78,7 +78,19 @@ The PAMELA interpreter will intercept any method call for all instances of \emph
  
 This general scheme provides also an extension point allowing to instrument the code. This extension point is used in order to integrate other features such as notification management, undo/redo stack management, assertion checking at run-time (support for \emph{Design by Contract}, aka JML), and dynamic code weaving in the context of \emph{Aspect Programming}.
 
-PAMELA model at runtime is computed dynamically, working on the classpath of launched Java application, and starting from a simple Java interface (or a collection of Java interfaces) which is/are PAMELA-annotated. From a mathematical point of view, internal representation of the underlying model is a graph whose vertex are PAMELA \emph{ModelEntities} (annotated Java interface), and edges are either inheritance links or reference links (a property whose type is another \emph{ModelEntity}. \mytexttt{@Imports} and \mytexttt{@Import} annotations allows to include some other \emph{ModelEntities} in the model. On the contrary, an annotation attribute \mytexttt{@Getter(...ignoreType=true)} allows to ignore the link. In that context, PAMELA model computation is a graph closure computation, starting from a collection of vertices.
+PAMELA model at runtime is computed dynamically, working on the classpath of
+launched Java application, and starting from a simple Java interface (or a
+collection of Java interfaces) which is/are PAMELA-annotated. From a
+mathematical point of view, internal representation of the underlying model is
+a graph whose vertices are PAMELA \emph{ModelEntities} (annotated Java
+interface), and edges are either inheritance links or reference links (a
+property whose type is another \emph{ModelEntity}). \mytexttt{@Imports} and
+  \mytexttt{@Import} annotations allows to include some other
+  \emph{ModelEntities} in the model. On the contrary, an annotation attribute
+  \mytexttt{@Getter(...ignoreType=true)} allows to ignore the link. In that
+  context, PAMELA model computation is a graph closure computation, starting
+  from a collection of vertices.
+
 %\footnote{Model closure computation on-the-fly provides an interesting approach to deal with model fragmentation.} 
 A PAMELA model at runtime is represented by a \mytexttt{ModelContext}.
 
@@ -90,7 +102,8 @@ PAMELA instances (instances of \emph{ModelEntity}) are handled though the use of
 %    \item Strong coupling between model and code
 %    \item Strong typing is kept, and required checks are performed by the Java compiler
 %    \item PAMELA framework provides interpretation of model@runtime
-%    \item No need to generate POJO (plain old Java objects), as their execution follow the standard semantics (less code, less bugs)
+%    \item No need to generate POJO (plain old Java objects), as their
+%    execution follow the standard semantics (less code, fewer bugs)
 %    \item Custom implementation are provided if needed, using classical Java extension points
 %    \item It offers a way to intercept method calls and instrument the code
 %    \item Assertions checking at runtime
