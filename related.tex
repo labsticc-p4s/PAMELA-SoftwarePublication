@@ -1,11 +1,15 @@
-Very few approaches build interfaces between MDE artifacts and source code at
-runtime. FAME \cite{kuhn2008fame} is  a library that keeps metamodels
+The PAMELA framework can be seen as a CASE tool that focuses in the design and verification and validation phases of the software development life-cycle. In that sense, it present similarities to other existing object oriented CASE tools and/or language workbenches such as Kermeta~\cite{kermeta} and the Platypus~\cite{platypus} meta-case tool as they permit the definition and manipulation of models, metamodels and constraints/behavior. Two main features separate PAMELA from those approaches though: 1) The main artefact for the PAMELA framework is standard java code; and 2) PAMELA does not rely on code generation but on the interpretation/construction of models at runtime guided by code annotations. This allows for the seamlessly blending of the metamodeling/programming phases.
+
+When the observed artifact is code (e.g., for runtime analysis or verification of properties) we could see our approach as similar to some contributions appertaining to the models@runtime topic~\cite{bencomo2019models}. Indeed models@runtime approaches often rely  on the use of the the reflection architectural pattern~\cite{buschmann2008pattern} in order to separate core application logic from a metalevel that contains information about properties. This is also the case of PAMELA. However the focus of most models@runtime approaches is not on easing the development process but on enabling the analysis and/or the adaptation/evolution of ever running applications. Examples of such approaches are AC-Contrat~\cite{accontract} focusing in the Run-time verification of properties for context-aware applications. Ramses~\cite{ramses} focusing on dynamic adaptations,~\cite{denker2010modeling} focusing on feature analysis and~\cite{song2010applying}, which wraps running system in standard UML-like models in order to perform analysis and management task by using off-the-shelf MDE tools and techniques.
+
+More similar to PAMELA, FAME \cite{kuhn2008fame} is  a library that keeps metamodels
 accessible and adaptable at runtime. Basically, FAME attaches meta-information
 to the objects of a running application permitting a uniform manipulation of
-both models and system objects at runtime. Similarly, in
-\cite{song2010applying} the authors use runtime models to maintain a causal
-connection between a model and a running systems for monitoring and control
-purposes. More recently, in \cite{boronat2019} the authors construct and
+both models and system objects at runtime. 
+
+
+
+More recently, in \cite{boronat2019} the authors construct and
 maintain at runtime model-based views on the data manipulated in
 object-oriented code. Different to the aforementioned approaches, PAMELA does
 not focus in reflecting and manipulating running systems but in: 1) extending
