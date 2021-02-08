@@ -1,21 +1,12 @@
 The PAMELA framework can be seen as a CASE tool that focuses in the design and verification and validation phases of the software development life-cycle. In that sense, it present similarities to other existing object oriented CASE tools and/or language workbenches such as Kermeta~\cite{kermeta} and the Platypus~\cite{platypus} meta-case tool as they permit the definition and manipulation of models, metamodels and constraints/behavior. Two main features separate PAMELA from those approaches though: 1) The main artefact for the PAMELA framework is standard java code; and 2) PAMELA does not rely on code generation but on the interpretation/construction of models at runtime guided by code annotations. This allows for the seamlessly blending of the metamodeling/programming phases.
 
-When the observed artifact is code (e.g., for runtime analysis or verification of properties) we could see our approach as similar to some contributions appertaining to the models@runtime topic~\cite{bencomo2019models}. Indeed models@runtime approaches often rely  on the use of the the reflection architectural pattern~\cite{buschmann2008pattern} in order to separate core application logic from a metalevel that contains information about properties. This is also the case of PAMELA. However the focus of most models@runtime approaches is not on easing the development process but on enabling the analysis and/or the adaptation/evolution of ever running applications. Examples of such approaches are AC-Contrat~\cite{accontract} focusing in the Run-time verification of properties for context-aware applications. Ramses~\cite{ramses} focusing on dynamic adaptations,~\cite{denker2010modeling} focusing on feature analysis and~\cite{song2010applying}, which wraps running system in standard UML-like models in order to perform analysis and management task by using off-the-shelf MDE tools and techniques.
+When the observed artifact is code (e.g., for runtime analysis or verification of properties) we could see our approach as similar to some contributions appertaining to the models@runtime topic~\cite{bencomo2019models}. Indeed models@runtime approaches often rely  on the use of the the reflection architectural pattern~\cite{buschmann2008pattern} in order to separate core application logic from a metalevel that contains information about properties. This is also the case of PAMELA. 
+%However the focus of most models@runtime approaches is not on easing the development process but on enabling the analysis and/or the adaptation/evolution of ever running applications. 
+Examples of such approaches are AC-Contrat~\cite{accontract} focusing in the Run-time verification of properties for context-aware applications. Ramses~\cite{ramses} focusing on dynamic adaptations,~\cite{denker2010modeling} focusing on feature analysis and~\cite{song2010applying}, which wraps running system in standard UML-like models in order to perform analysis and management task by using off-the-shelf MDE tools and techniques. More similar to PAMELA, FAME \cite{kuhn2008fame} is a polyglot library that keeps metamodels accessible and adaptable at runtime. Basically, FAME attaches meta-information to the objects of a running application permitting a uniform manipulation of both models and system objects at runtime. Synchronization of changes between models and code are however limited for languages such as Java. In~\cite{cavarle2016dynamic} the authors present an approach to keep the (bi-directional) synchronization between feature-based models and generated code alternatives. They rely on Pharo\cite{pharo} reflective capabilities. 
+More recently, in \cite{boronat2019} the authors construct and maintain at runtime model-based views on the data manipulated in object-oriented code.
 
-More similar to PAMELA, FAME \cite{kuhn2008fame} is  a library that keeps metamodels
-accessible and adaptable at runtime. Basically, FAME attaches meta-information
-to the objects of a running application permitting a uniform manipulation of
-both models and system objects at runtime. 
+Different to the aforementioned approaches, the focus of PAMELA is not on adapting or observing ever running programs (although it can be used for the verification of runtime properties as demonstrated in~\cite{silva20}) but on: 1) providing a mechanism to blend coding and metamodeling so that the code and the metamodel may be built incrementally without the need for code generation and thus, avoiding round-tripping issues; and 2) providing default implementations for frequently used concepts in order to ease development. In that sense PAMELA can be seen as a mix between classical CASE tools and the aforementioned models@runtime approaches.
 
-
-
-More recently, in \cite{boronat2019} the authors construct and
-maintain at runtime model-based views on the data manipulated in
-object-oriented code. Different to the aforementioned approaches, PAMELA does
-not focus in reflecting and manipulating running systems but in: 1) extending
-their behaviors; and 2) maintaining a continuous cycle of metamodeling so that
-models and corresponding code remain synchronized without the need for code
-generation processes. In a different approach, UMPLE
-\cite{lethbridge2016merging} mixes programming and modeling by integrating UML
+In a different approach, UMPLE\cite{lethbridge2016merging} mixes programming and modeling by integrating UML
 constructs into languages such as Java. However, they use code generation for
 the runtime part of the system.
