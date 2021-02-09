@@ -32,7 +32,12 @@ PAMELA is composed of one design time component (the PAMELA metamodel, plus a nu
 The PAMELA metamodel is depicted in Figure  \ref{fig:PamelaMetaModel}, and allows, though the use of annotations, the definition of \emph{simple} UML-like models directly on the code.
 
 A \texttt{PAMELAModel} is defined as a set of references to \texttt{ModelEntity}. A \texttt{ModelEntity} reflects a concept and is encoded in a Java \texttt{interface}. PAMELA metamodel allows multiple inheritance: thus \texttt{ModelEntity} may define a set of parent entities. Note that reification of \texttt{ModelEntity} is performed in a Java \texttt{interface} (and not a class), which only defines API whithout any implementation for methods. 
-Note that \emph{ModelEntities} may declare \emph{ImplementationClasses}, which will be responsible for providing custom code implementing domain or application specific behaviour. A partially implemented \texttt{abstract} Java \texttt{class} may be defined as partial base implementation (conforms to implemented interface).
+Note that \emph{ModelEntities} may declare \emph{ImplementationClasses}, which
+will be responsible for providing custom code implementing domain or
+application specific behaviour. A partially implemented \texttt{abstract} Java
+\texttt{class} may be defined as partial base implementation (conforms to
+implemented interface), \jcb{as default methods in Java interfaces would be
+(since Java 8).}
 
 A \texttt{ModelEntity} also defines some properties, encoded as \texttt{ModelProperty}. A \texttt{ModelProperty} is identified by a name, a cardinality (simple or multiple) and a type, which can be a reference to another \texttt{ModelEntity}, or a Java type (a primitive or an arbitrary complex Java type). Depending on its cardinality, a \texttt{ModelProperty} is bound to a set of methods reflecting use of property.
 \begin{itemize}
@@ -86,8 +91,8 @@ mathematical point of view, internal representation of the underlying model is
 a graph whose vertices are PAMELA \emph{ModelEntities} (annotated Java
 interface), and edges are either inheritance links or reference links (a
 property whose type is another \emph{ModelEntity}). \mytexttt{@Imports} and
-  \mytexttt{@Import} annotations allows to include some other
-  \emph{ModelEntities} in the model. On the contrary, an annotation attribute
+  \mytexttt{@Import} annotations allow to include some other
+  \emph{ModelEntities} in the model. An annotation attribute
   \mytexttt{@Getter(...ignoreType=true)} allows to ignore the link. In that
   context, PAMELA model computation is a graph closure computation, starting
   from a collection of vertices.
@@ -95,7 +100,7 @@ property whose type is another \emph{ModelEntity}). \mytexttt{@Imports} and
 %\footnote{Model closure computation on-the-fly provides an interesting approach to deal with model fragmentation.} 
 A PAMELA model at runtime is represented by a \mytexttt{ModelContext}.
 
-PAMELA instances (instances of \emph{ModelEntity}) are handled though the use of \mytexttt{ModelFactory}, which is instantiated from a \mytexttt{ModelContext}.
+PAMELA instances (instances of \emph{ModelEntity}) are handled through the use of \mytexttt{ModelFactory}, which is instantiated from a \mytexttt{ModelContext}.
 
 % Folloging section/itemize may be removed when needed 
 %This composition offers many benefits: 
