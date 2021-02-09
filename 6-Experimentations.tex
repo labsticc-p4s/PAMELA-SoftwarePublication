@@ -13,21 +13,56 @@
 
 \subsection{Openflexo infrastructure}
 
-Model Federation is an approach that provides the means to integrate multiple models conforming to different paradigms, and giving to each stakeholder a specific view adapted to its needs. Model federation approach is developed as a possible response to SIMF RFP (Semantic Information Modeling for Federation) by OMG (Object Modeling Group). This RFP (Request For Proposal) requests submissions for a standard addressing, ”federation of information across different representations, levels of abstraction, communities, organizations, viewpoints, and authorities”. Thus model federation allows the integration of heterogeneous models to develop new cross-concern viewpoints/models or to synchronize the models used for designing a system. 
+Model Federation~\cite{Golra2016} is an approach that provides the means to
+integrate multiple models conforming to different paradigms, and giving to each
+stakeholder a specific view adapted to its needs. Model federation approach is
+developed as a possible response to SIMF RFP (Semantic Information Modeling for
+Federation)i~\cite{simf-rfp} by OMG (Object Modeling Group). This RFP (Request For Proposal)
+requests submissions for a standard addressing, ”federation of information
+across different representations, levels of abstraction, communities,
+organizations, viewpoints, and authorities”. Thus model federation allows the
+integration of heterogeneous models to develop new cross-concern
+viewpoints/models or to synchronize the models used for designing a system. 
 
-Openflexo\cite{OpenflexoWebSite} is a software infrastructure providing support for model federation across multiple technological spaces. Conceptualization is addressed trough the proposition of a language called FML (Flexo Modeling Language), which is executable on the platform. Openflexo infrastructure introduces connectors (also called Technology Adapters) to support various technological spaces and paradigms.
+Openflexo\cite{OpenflexoWebSite} is a software infrastructure providing support
+for model federation across multiple technological spaces. Conceptualization is
+addressed trough the proposition of a language called FML (Flexo Modeling
+Language), which is executable on the platform. Openflexo infrastructure
+introduces connectors (also called Technology Adapters) to support various
+technological spaces and paradigms.
 
-This open source initiative is now mature at the infrastructure level, and many projects and applications have been developed and powered using Openflexo infrastructure. More than 15 technology adapters have been developed, with various maturity stage regarding their industrialization (Microsoft Word, Excel and PowerPoint, EMF, OWL, Diagramming, JDBC, XML, OSLC, etc...)
+This open source initiative is now mature at the infrastructure level, and many
+projects and applications have been developed and powered using Openflexo
+infrastructure. More than 15 technology adapters have been developed, with
+various maturity stage regarding their industrialization (Microsoft Word, Excel
+and PowerPoint, EMF, OWL, Diagramming, JDBC, XML, OSLC, etc...)
 
-The total base of code for Openflexo infrastructure represents around 900.000 lines of Java code. Regarding backend modeling, the PAMELA framework is extensively used in Openflexo core as well as in most technology adapters, with very few specific implementations for properties. The observer/observable pattern is generally used for graphical user interfaces, which also rely on PAMELA framework. 
+The total base of code for Openflexo infrastructure represents around 900.000
+lines of Java code. Regarding backend modeling, the PAMELA framework is
+extensively used in Openflexo core as well as in most technology adapters, with
+very few specific implementations for properties. The observer/observable
+pattern is generally used for graphical user interfaces, which also rely on
+PAMELA framework. 
 
 % Continuous integration ?
 
 \subsection{Formose project}
 
-The Formose ANR (french National Agency for Research) project (ANR-14-CE28-0009)\cite{FormoseWebSite} aimed to design a formally-grounded, model-based requirements engineering (RE) method for critical complex systems, supported by an open-source environment. The main partners were: ClearSy, LACL, Institut Mines-Telecom, OpenFlexo, and THALES. 
+The Formose ANR (french National Agency for Research) project
+(ANR-14-CE28-0009)\cite{FormoseWebSite} aimed to design a formally-grounded,
+model-based requirements engineering (RE) method for critical complex systems,
+supported by an open-source environment. The main partners were: ClearSy, LACL,
+Institut Mines-Telecom, OpenFlexo, and THALES. 
 
-The main results of the project are a requirements modeling multi-views language, its associated design process and the development of an opensource platform called Formod\cite{FormodWebSite}, built using Openflexo infrastructure and PAMELA framework. \todo{Say how and where PAMELA was used} The requirements modeling language is based on KAOS for goal modeling and SysML for the structural part of a system. The associated domain modeling language, used to describe system domain knowledge, extends the two ontology languages OWL and PLIB. The graphical notations are then translated into Event-B, a formal specification method supported by verification tools. 
+The main results of the project are a requirements modeling multi-views
+language, its associated design process and the development of an opensource
+platform called Formod\cite{FormodWebSite}, built using Openflexo
+infrastructure and PAMELA framework. \todo{Say how and where PAMELA was used}
+The requirements modeling language is based on KAOS~\cite{kaos} for goal
+modeling and SysML for the structural part of a system. The associated domain
+modeling language, used to describe system domain knowledge, extends the two
+ontology languages OWL~\cite{owl} and PLIB~\cite{plib}. The graphical notations
+are then translated into Event-B~\cite{eventb}, a formal specification method supported by verification tools. 
 
 \todo{Remark that it is industry ready}
 
