@@ -26,10 +26,35 @@ From a technical point of view, PAMELA implementation uses the \emph{javassist} 
 
 The PAMELA framework is a 100\% pure Java (\textgreater 1.5), compilable by a classical Java compiler and executable in a classical Java Virtual Machine.
 
-\subsection{PAMELA code base figures}
+\subsection{PAMELA code base metrics}
 
-\todo{Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
+\sg{
 
+PAMELA implementation is modularized. 
+
+\begin{itemize}
+    \vspace{-0.2cm}\item Core implementation (\texttt{pamela-core}) provides all base features for PAMELA. It contains 20k lines of code involving 184 classes. This code is covered with unit test (6k lines of code, 112 classes). Reached code coverage is about 66\%.
+    \vspace{-0.2cm}\item \texttt{pamela-security-patterns} is an add-on library containing some security-pattern implementations.
+    \vspace{-0.2cm}\item \texttt{pamela-perf-tests} contains benchmarking tools whose purpose is to quantifiate PAMELA performances. 
+\end{itemize}
+
+}
+%\todo{Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
+
+\subsection{On performance issues}
+
+\sg{
+Compared to a basic POJO (Plain Object Java Object) implementation, use of PAMELA involves a significant CPU and memory-footprint overhead, because of the partially-interpretated nature for some model features.
+
+A workbench\footnote {\url{https://github.com/openflexo-team/pamela/tree/1.6.1/pamela-perf-tests}} has been developped to help measure that overhead. We use a base model composed of four entities defining 4 to 5 properties (single and multiple properties), and we instantiate that tree model (1010101 objects created and initialized to default value). From this simple model, two java implementations have been derived using code generation. The first implementation was made using fully implemented java classes (POJO), while the second one is fully interpretated (it uses PAMELA framework and defines only interfaces and API methods). 
+
+Unsurprisingly, we quantifiate a significant CPU overhead (from x20). This is due to the fact that \texttt{MethodHandler} mechanism is fully interpretated and contains many hooks, and cannot be compared to a fully-compiled and optimized Java dynamic binding. As well, memory footprint is increased from a x5 factor.
+
+These conclusions must be moderated by the fact that this overhead only applies to a very small portion of code (mostly property accessors methods). A "real-world" model implementation generally involves a bigger "business code" part, which is generally the first CPU-time consumer. Using PAMELA won't increase CPU use on "business code" if this code is implemented with plain Java code (which is generally the case). As we will see in next section, PAMELA has been successfully applied to many industrial projects, where no major performance issues were reported.
+
+Moreover, comparison between the two implementations should be tempered by the fact that PAMELA implementation offers many functional features which are not present in the base implementation (such as undo/redo, clipboard management, runtime monitoring and weaving, etc...).
+
+}
 
 % Rajouter un paragraphe sur le fait que PAMELA est une implementation du MOP (meta object protocol) ?
 

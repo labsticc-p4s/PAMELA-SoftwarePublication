@@ -1,0 +1,224 @@
+% Title:    A LaTeX Template For Responses To a Referees' Reports
+% Author:   Petr Zemek <s3rvac@gmail.com>
+% Homepage: https://blog.petrzemek.net/2016/07/17/latex-template-for-responses-to-referees-reports/
+% License:  CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+\documentclass[10pt]{article}
+
+% Allow Unicode input (alternatively, you can use XeLaTeX or LuaLaTeX)
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\usepackage{microtype,xparse,tcolorbox}
+\newenvironment{reviewer-comment}{}{}
+\tcbuselibrary{skins}
+\tcolorboxenvironment{reviewer-comment }{empty,
+  left = 1em, top = 1ex, bottom = 1ex,
+  borderline west = {2pt} {0pt} {black!20},
+}
+\ExplSyntaxOn
+\NewDocumentEnvironment {response} { +m O{black!20} } {
+  \IfValueT {#1} {
+    \begin{reviewer-comment~}
+      \setlength\parindent{2em}
+      \noindent
+      \ttfamily #1
+    \end{reviewer-comment~}
+  }
+  \par\noindent\ignorespaces\color{blue}
+} { \bigskip\par }
+
+\NewDocumentCommand \Reviewer { m } {
+  \section*{Comments~by~Reviewer~#1}
+}
+
+\NewDocumentCommand \ToolComments { m } {
+  \section*{Tool~Comments~by~Reviewer~#1}
+}
+
+\ExplSyntaxOff
+\AtBeginDocument{\maketitle\thispagestyle{empty}\noindent}
+
+% You can get probably get rid of these definitions:
+\newcommand\meta[1]{$\langle\hbox{#1}\rangle$}
+\newcommand\PaperTitle[1]{``\textit{#1}''}
+
+\title{Response letter to Manuscript SCICO-D-20-00176 entitled "PAMELA: an Annotation-Based Java Modeling Framework"}
+%\author{Author1 \and Author2 \and Author3}
+\date{\today}
+
+\begin{document}
+
+Dear Editor,
+
+\bigskip
+Thanks for your message of January 9th, 2021, in which you suggested preparing a major revision of our manuscript  \textbf{PAMELA: an Annotation-Based Java Modeling Framework}. 
+
+\bigskip
+We are grateful to the reviewers for their interest, effort, and suggestions. We detail in the following pages how we have addressed the reviewers' concerns; we are confident that the paper is now stronger, and hope that you will agree. We have organized the responses to the comments on a per-reviewer basis, focusing, as suggested, on: 
+
+\begin{itemize}
+\item Improving the readability of the manuscript. 
+\item Improving tool documentation and examples.
+\item Provide additional experiments \& evaluation.
+\end{itemize}
+
+Moreover, the paper has been thoroughly revised to fix minor issues and to give the additional clarifications required by the reviewers. Please let us know if you need any further information or clarification.
+
+\bigskip
+Sincerely yours,
+
+\bigskip
+Sylvain, Guillaume, Caine, Joel, Jean-Christophe, Salvador and Antoine
+
+\pagebreak
+
+
+\Reviewer{\#1}
+\begin{response}{They then briefly discuss implementation details, in a single page; and then discuss 'industrial use cases and experiments'.
+
+Unfortunately, the latter leaves much to be desired, as much of the text is spent on the context/tools in which the tool was used, but not on how it was used, nor with any quantification on how extensive its use was, or what the performance of the resulting constellation is.
+}
+  Response to the first comment.
+\end{response}
+\begin{response}{Also lacking is a more thorough comparison to existing work; your related work section gives a very shallow comparison to other approaches..}
+  Response to the second comment.
+\end{response}
+
+\begin{response}{What would also be interesting is a general discussion on performance of your tool, gains by using your tool, ...
+}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{Your reference list is incomplete and inconsistent. Formod or Formosa? When were URLs accessed (add date). DOIs are missing. Ref. 5 should have the ISoLA track name and editors added. Ref. 7 is missing publisher, journal, conference. Inconsistent use of first names, first names + initials, first initial.}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{The paper highlights include "Contract programming with assertions [remove the plural] checking at runtime", yet that is not mentioned in the paper at all.
+}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{That also brings up the question: what about correctness of your code? Any evidence for that?}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{p10 l32+: very little detail or quantification on the tool's code base. Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{p10 l32+: very little detail or quantification on the tool's code base. Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
+  Response to n-ieme comment.
+\end{response}
+
+\ToolComments{\#1}
+
+\begin{response}{gives "git clone git@github.com:openflexo-team/pamela.git", which (even when using my own username) does not work. However, "git clone https://github.com/openflexo-team/pamela.git" immediately does. Why not state the latter?
+}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{how to actually build the environment is not stated for this option.}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{Run tests Unit tests located in src/test/java in pamela-core are a good starting point to discover the framework." No further information is given. Apparently, the user has to figure out him/herself how to run the tests. Documentation is lacking here.
+}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{Make your first model." And then what?
+}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{Summarizing: the *getting started* documentation is incomplete and certainly not suitable for getting started. The page "https://pamela.openflexo.org/SNAPSHOT/example.html" gives a basic example, but the relation between that and the getting started page is not made explicit, nor do the two in their current shape provide a user with a proper getting started, allowing him/her to at least (1) install the framework, (2) create a basic example, (3) use the framework with that basic example. This needs to be improved before an evaluation of the software can be completed.
+}
+  Response to n-ieme comment.
+\end{response}
+
+
+\pagebreak
+
+\Reviewer{\#2}
+\begin{response}{scenarios are missing. As a developer I don't know in which cases it is relevant to use this tool.}
+  Response to the first comment.
+\end{response}
+
+
+\begin{response}{how to use the tool is not describe properly. It is not clear if the developers need to write all the annotations. If an application is built with PAMELA, what is the link between the interfaces and the concrete classes. Indeed, at one point, code corresponding to the behaviour will be needed; and not only the accessors to navigate the structure of the model.}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{how does such "code" evolve with time? Authors have used PAMELA for years, how such applications resist with time?}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{section 2 is too abstract to be very useful}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{p6 "according to PAMELA semantics" but it is never explained.}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{the partially implemented class concept is not clear.}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{the additional features seem relevant, but they are not described. Either the authors describe them a bit more or they remove the section.}
+  Response to n-ieme comment.
+\end{response}
+
+
+\begin{response}{in section 3.4 it is not clear who writes what and at which step of the development process.}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{in section 5, the use of PAMELA in the two projects is not clear.}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{references are missing. For example Kermeta done, Platypus (from Alain Plantec) done, work of Glenn Cavarle and others from the model @runtime community.}
+  Response to n-ieme comment.
+\end{response}
+
+
+\begin{response}{in section 6, the authors write: "PAMELA does not focus in reflecting and manipulating running systems but in: 1) extending their behaviours; and 2) maintaining a continuous cycle of metamodeling... These two points are not clear previously in the paper.
+}
+  Response to n-ieme comment.
+\end{response}
+
+
+\ToolComments{\#2}
+
+\begin{response}{The link in the paper is not clickable and copy-and-paste does not work (because of latex?) Link found: https://github.com/openflexo-team/pamela}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{Installation
+The readme of the GitHub page should link to the installation page found in https://pamela.openflexo.org. It is unclear we must visit this web site to install the tool.
+}
+  Response to n-ieme comment.
+\end{response}
+
+\begin{response}{
+What I have done
+
+Create a new project in Intellij Idea with gradle
+Add the line found in \url{https://pamela.openflexo.org/SNAPSHOT/getting_started.html}
+
+- Test 1: Create a model with only one entity without error
+
+- Test 2: Create the example of the paper
+
+--->Bug: in Listing2, the authors execute Line9 ".setName" but the method does not exists
+Else, the example works.
+
+
+}
+  Response to n-ieme comment.
+\end{response}
+
+
+\end{document}
