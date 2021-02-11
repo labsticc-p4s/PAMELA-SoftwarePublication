@@ -81,9 +81,7 @@ Unfortunately, the latter leaves much to be desired, as much of the text is spen
 } Response to the first comment.
 \end{response}
 \begin{response}{Also lacking is a more thorough comparison to existing work; your related work section gives a very shallow comparison to other approaches..}
-
 We fully agree with the reviewer. We have expanded the related work section and compared our work with existing metamodeling and models@runtime approaches. Moreover, we have included a number of new references as suggested by Reviewer 2.
-
 \end{response}
 
 \begin{response}{What would also be interesting is a general discussion on performance of your tool, gains by using your tool, ...
@@ -157,11 +155,11 @@ We apologize for the inconvenience. We have replaced "git clone git@github.com:o
 \end{response}
 
 \begin{response}{p6 "according to PAMELA semantics" but it is never explained.}
-  Response to n-ieme comment.
+We have remove this reference to PAMELA semantics in the paper. Our intention was to refer to the PAMELA metamodel.
 \end{response}
 
 \begin{response}{the partially implemented class concept is not clear.}
-  Response to n-ieme comment.
+The partially implemented class concept is very similar to the default methods introduced in Java 8 (which were not available when PAMELA was first created) permitting a sort of multiple inheritance. We have clarified this in the paper.
 \end{response}
 
 \begin{response}{the additional features seem relevant, but they are not described. Either the authors describe them a bit more or they remove the section.}
@@ -177,21 +175,23 @@ We apologize for the inconvenience. We have replaced "git clone git@github.com:o
   Response to n-ieme comment.
 \end{response}
 
-\begin{response}{references are missing. For example Kermeta done, Platypus (from Alain Plantec) done, work of Glenn Cavarle and others from the model @runtime community.}
-  Response to n-ieme comment.
+\begin{response}{references are missing. For example Kermeta done, Platypus (from Alain Plantec), work of Glenn Cavarle and others from the model @runtime community.}
+We have extended the related work section in order to discuss the suggested related works (among others).
 \end{response}
 
 
 \begin{response}{in section 6, the authors write: "PAMELA does not focus in reflecting and manipulating running systems but in: 1) extending their behaviours; and 2) maintaining a continuous cycle of metamodeling... These two points are not clear previously in the paper.
 }
-  Response to n-ieme comment.
+We have removed that part as it was indeed misleading and not discussed in that form previously in the paper. We have rephrased as follows:
+
+PAMELA is not focused on adapting or observing ever running programs (although it can be used for the verification of runtime properties as demonstrated in [20]) but on:  1) providing a mechanism to blend coding and metamodeling so that the code and the metamodel  may  be  built  incrementally  without  the  need  for  code  generation and thus,  avoiding round-tripping issues;  and 2) providing default implementations for frequently used abstractions in order to ease development.
 \end{response}
 
 
 \ToolComments{\#2}
 
 \begin{response}{The link in the paper is not clickable and copy-and-paste does not work (because of latex?) Link found: https://github.com/openflexo-team/pamela}
-  Response to n-ieme comment.
+Thanks for pointing this out. We have modified the latex settings so that this link (and all the others throughout the paper) is now clickable.
 \end{response}
 
 \begin{response}{Installation
