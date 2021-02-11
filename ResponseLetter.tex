@@ -10,7 +10,7 @@
 \usepackage{xcolor}
 
 \usepackage{microtype,xparse,tcolorbox}
-\newenvironment{reviewer-comment}{}{}
+\newenvironment{reviewer-comment }{}{}
 \tcbuselibrary{skins}
 \tcolorboxenvironment{reviewer-comment }{empty,
   left = 1em, top = 1ex, bottom = 1ex,
@@ -19,11 +19,11 @@
 \ExplSyntaxOn
 \NewDocumentEnvironment {response} { +m O{black!20} } {
   \IfValueT {#1} {
-    \begin{reviewer-comment~}
+    \begin{reviewer-comment~ }
       \setlength\parindent{2em}
       \noindent
       \ttfamily #1
-    \end{reviewer-comment~}
+    \end{reviewer-comment~ }
   }
   \par\noindent\ignorespaces\color{blue}
 } { \bigskip\par }
@@ -78,20 +78,21 @@ Sylvain, Guillaume, Caine, Joel, Jean-Christophe, Salvador and Antoine
 \begin{response}{They then briefly discuss implementation details, in a single page; and then discuss 'industrial use cases and experiments'.
 
 Unfortunately, the latter leaves much to be desired, as much of the text is spent on the context/tools in which the tool was used, but not on how it was used, nor with any quantification on how extensive its use was, or what the performance of the resulting constellation is.
-}
-  Response to the first comment.
+} Response to the first comment.
 \end{response}
 \begin{response}{Also lacking is a more thorough comparison to existing work; your related work section gives a very shallow comparison to other approaches..}
-  Response to the second comment.
+
+We fully agree with the reviewer. We have expanded the related work section and compared our work with existing metamodeling and models@runtime approaches. Moreover, we have included a number of new references as suggested by Reviewer 2.
+
 \end{response}
 
 \begin{response}{What would also be interesting is a general discussion on performance of your tool, gains by using your tool, ...
 }
-  Response to n-ieme comment.
+Response to n-ieme comment.
 \end{response}
 
 \begin{response}{Your reference list is incomplete and inconsistent. Formod or Formosa? When were URLs accessed (add date). DOIs are missing. Ref. 5 should have the ISoLA track name and editors added. Ref. 7 is missing publisher, journal, conference. Inconsistent use of first names, first names + initials, first initial.}
-  Response to n-ieme comment.
+We have expanded our reference list and fixed all (detected) insconsistencies.
 \end{response}
 
 \begin{response}{The paper highlights include "Contract programming with assertions [remove the plural] checking at runtime", yet that is not mentioned in the paper at all.
@@ -100,11 +101,7 @@ Unfortunately, the latter leaves much to be desired, as much of the text is spen
 \end{response}
 
 \begin{response}{That also brings up the question: what about correctness of your code? Any evidence for that?}
-  Response to n-ieme comment.
-\end{response}
-
-\begin{response}{p10 l32+: very little detail or quantification on the tool's code base. Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
-  Response to n-ieme comment.
+PAMELA have been thoroughly tested. Indeed, the test suite (which is available in package XXX) reaches a coverage of XX\% of the code.
 \end{response}
 
 \begin{response}{p10 l32+: very little detail or quantification on the tool's code base. Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
@@ -115,7 +112,8 @@ Unfortunately, the latter leaves much to be desired, as much of the text is spen
 
 \begin{response}{gives "git clone git@github.com:openflexo-team/pamela.git", which (even when using my own username) does not work. However, "git clone https://github.com/openflexo-team/pamela.git" immediately does. Why not state the latter?
 }
-  Response to n-ieme comment.
+
+We apologize for the inconvenience. We have replaced "git clone git@github.com:openflexo-team/pamela.git" for "git clone https://github.com/openflexo-team/pamela.git" as suggested.
 \end{response}
 
 \begin{response}{how to actually build the environment is not stated for this option.}
