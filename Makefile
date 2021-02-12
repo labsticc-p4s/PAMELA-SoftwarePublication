@@ -1,9 +1,15 @@
 TEXFILE=1-Main
+TEXFILE1=ResponseLetter
 
 LATEXCMD=latexmk -f --synctex=1 -pdf
 
+all: main letter 
+
 main: 
 	$(LATEXCMD) $(TEXFILE)
+
+letter:
+	$(LATEXCMD) $(TEXFILE1)
 
 clean:
 	rm -Rf *.log *.aux *~ *.toc *.brf *.bbl *.blg *.ps *.fdb_latexmk \
