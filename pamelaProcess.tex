@@ -1,4 +1,4 @@
-We advocate for a strong coupling between model and source-code, to give architects and developers a way to both interact during the whole development cycle. PAMELA is an annotation-based Java modeling framework providing a smooth integration between model and code, without code generation nor externalized model serialization. \sg{Instead of generating the code, the API (mostly Java interfaces with abstract method declarations) is locally executed.}. The idea is to avoid separation between modeling and code to facilitate consistency management and to /avoid round-trip issues. Figure \ref{fig:PamelaVision} summarizes the PAMELA architecture.  
+We advocate for a strong coupling between model and source-code, to give architects and developers a way to both interact during the whole development cycle. PAMELA is an annotation-based Java modeling framework providing a smooth integration between model and code, without code generation nor externalized model serialization. \sg{Instead of generating the code, the API (mostly Java interfaces with abstract method declarations) is locally executed (interpreted).} The idea is to avoid separation between modeling and code to facilitate consistency management and to /avoid round-trip issues. Figure \ref{fig:PamelaVision} summarizes the PAMELA architecture and is more detailed thereafter.  
 
 \begin{figure}
     \centering
@@ -24,7 +24,7 @@ Here are various conceivable scenarios for PAMELA use:
 \begin{itemize}
     \vspace{-0.2cm}\item \textbf{Programming use} : programmers reuse existing annotations and write model and code at the same time (the modelers and programmers share the same artifacts : the Java code). This scenario includes the case where the model (made by the modelers) is pre-existing.
     \vspace{-0.2cm}\item \textbf{Reengineering} : programmers start from an existing base of code (legacy) and refactor it while replacing existing code by abstract method declarations in Java interface, reducing risks of errors.
-    \vspace{-0.2cm}\item \textbf{Aspect-oriented programming} : programmers may use or redefine "patterns" (eg Security Patterns) which offers code weaving at runtime, as well as runtime monitoring.
+    \vspace{-0.2cm}\item \textbf{Aspect-oriented programming} : programmers may use or redefine "patterns" (eg Security Patterns \cite{silva20}) which offers code weaving at runtime, as well as runtime monitoring.
     \vspace{-0.2cm}\item \textbf{Advanced programmers use} : programmers may extends PAMELA with their own annotations, their own implementations, their own patterns, etc...
 \end{itemize}
 }
