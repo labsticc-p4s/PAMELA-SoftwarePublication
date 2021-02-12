@@ -37,12 +37,24 @@ infrastructure. More than 15 technology adapters have been developed, with
 various maturity stage regarding their industrialization (Microsoft Word, Excel
 and PowerPoint, EMF, OWL, Diagramming, JDBC, XML, OSLC, etc...)
 
+\sg{
+The full Openflexo infrastructure is composed of about 50 components. In most components, PAMELA framework is extensively used. As an example \texttt{diana} component\footnote{\url{https://diana.openflexo.org}} (a component providing diagramming features) is composed of 998 classes. 159 of those classes (mostly the diagramming model) are defined as Pamela \texttt{ModelEntity}. 
+}
+
 The total base of code for Openflexo infrastructure represents around 900.000
 lines of Java code. Regarding backend modeling, the PAMELA framework is
 extensively used in Openflexo core as well as in most technology adapters, with
 very few specific implementations for properties. The observer/observable
 pattern is generally used for graphical user interfaces, which also rely on
 PAMELA framework. 
+
+\sg{
+An interesting experimentation has been done in the context of Openflexo development process. When Pamela has been integrated to the code base, a big portion of former legacy code has gradually and iteratively been migrated to Pamela. Refactoring mainly consisted in removing code, and replacing method implementation by API method declaration. In some parts of core model implementation, code has been reduced by 80\% (in terms of lines of Java code), and many bugs disappeared, as they were caused by programming errors.
+}
+
+\sg{
+Pamela implementation is now really stable and mature. According to Openflexo infrastructure developers, maintenance of code base (about 10 years of development) raises no Pamela-specific issue, while co-evolution of model and code is greatly improved compared to a "code generation"-based solution.
+}
 
 % Continuous integration ?
 
