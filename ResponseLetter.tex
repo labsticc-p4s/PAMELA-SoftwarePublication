@@ -8,6 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{todonotes}
 
 \usepackage{microtype,xparse,tcolorbox}
 \newenvironment{reviewer-comment }{}{}
@@ -58,9 +59,9 @@ Thanks for your message of January 9th, 2021, in which you suggested preparing a
 We are grateful to the reviewers for their interest, effort, and suggestions. We detail in the following pages how we have addressed the reviewers' concerns; we are confident that the paper is now stronger, and hope that you will agree. We have organized the responses to the comments on a per-reviewer basis, focusing, as suggested, on: 
 
 \begin{itemize}
-\item Improving the readability of the manuscript. 
+\item Providing further details on the usage scenarios of PAMELA.
+\item Provide additional details about experiments \& evaluation.
 \item Improving tool documentation and examples.
-\item Provide additional experiments \& evaluation.
 \end{itemize}
 
 Moreover, the paper has been thoroughly revised to fix minor issues and to give the additional clarifications required by the reviewers. Please let us know if you need any further information or clarification.
@@ -98,7 +99,7 @@ We have expanded our reference list and fixed all (detected) insconsistencies.
 \end{response}
 
 \begin{response}{That also brings up the question: what about correctness of your code? Any evidence for that?}
-PAMELA have been thoroughly tested. The core PAMELA implementation is accompained with a battery of unit tests (6k lines of code and 112 classes) reaching a coverage of 66\%. We have modified the paper in order to add this information in a new Section 4.3.
+PAMELA have been thoroughly tested. The core PAMELA implementation is accompanied with a battery of unit tests (6k lines of code and 112 classes) reaching a coverage of 66\%. We have modified the paper in order to add this information in a new Section 4.3.
 \end{response}
 
 \begin{response}{p10 l32+: very little detail or quantification on the tool's code base. Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
@@ -123,7 +124,7 @@ We apologize for the inconvenience. The PAMELA documentation and web site have b
 
 \begin{response}{Run tests Unit tests located in src/test/java in pamela-core are a good starting point to discover the framework." No further information is given. Apparently, the user has to figure out him/herself how to run the tests. Documentation is lacking here.
 }
-  Response to n-ieme comment.
+ Answer to question X \todo{I do not know what to answer here.}
 \end{response}
 
 \begin{response}{Make your first model." And then what?
@@ -133,7 +134,7 @@ We have refactored the PAMELA documentation on the web site so that it redirects
 
 \begin{response}{Summarizing: the *getting started* documentation is incomplete and certainly not suitable for getting started. The page "https://pamela.openflexo.org/SNAPSHOT/example.html" gives a basic example, but the relation between that and the getting started page is not made explicit, nor do the two in their current shape provide a user with a proper getting started, allowing him/her to at least (1) install the framework, (2) create a basic example, (3) use the framework with that basic example. This needs to be improved before an evaluation of the software can be completed.
 }
-We apologize again for the lack of clarity in the documentation. It has been refactored so that the starting point is clear and the reader is guided step by step to the realization/usage of a first model.
+We apologize again for the lack of clarity in the documentation. We have refactored it so that the starting point is clear and the reader is guided step by step to the realization/usage of a first model.
 \end{response}
 
 
@@ -141,11 +142,11 @@ We apologize again for the lack of clarity in the documentation. It has been ref
 
 \Reviewer{\#2}
 \begin{response}{scenarios are missing. As a developer I don't know in which cases it is relevant to use this tool.}
-We have rewritten Section 2 so that it includes now a list and brief description of typical usage scenarios for the PAMELA framework (e.g., coding-metamodeling blending, aspect-oriented programming or legacy code re-engineering). We also state that the standard PAMELA user will reuse existing annotation while more advanced users may become (meta) modelers and provide their own abstractions in a continous modeling approach. 
+We have rewritten Section 2 so that it includes now a list and brief description of typical usage scenarios for the PAMELA framework (e.g., coding-metamodeling blending, aspect-oriented programming or legacy code re-engineering). We also state that the standard PAMELA user will reuse existing annotation while more advanced users may become (meta) modelers and provide their own abstractions in a continuous modeling approach. 
 \end{response}
 
 
-\begin{response}{how to use the tool is not describe properly. It is not clear if the developers need to write all the annotations. If an application is built with PAMELA, what is the link between the interfaces and the concrete classes. Indeed, at one point, code corresponding to the behaviour will be needed; and not only the accessors to navigate the structure of the model.}
+\begin{response}{how to use the tool is not describe properly. It is not clear if the developers need to write all the annotations. If an application is built with PAMELA, what is the link between the interfaces and the concrete classes. Indeed, at one point, code corresponding to the behavior will be needed; and not only the accessors to navigate the structure of the model.}
 We have modified Section 2 to clarify that standard PAMELA users will reuse existing annotations which are accompanied with default implementations in the PAMELA interpreter. Additional details are given in Sections 3 and 4 (and in the online documentation: \url{https://pamela.openflexo.org/SNAPSHOT/pamela-core/3-metaprogramming_support.html}) See Listing 3 for an example of how the default implementation can be replaced by custom ones.
 \end{response}
 
@@ -155,7 +156,7 @@ We briefly discuss in Section 5.1. how integrating PAMELA in the OpenFlexo tool 
 \end{response}
 
 \begin{response}{section 2 is too abstract to be very useful}
-  Response to n-ieme comment.
+Please, see the two first answers above where we explain how we have extended Section 2.
 \end{response}
 
 \begin{response}{p6 "according to PAMELA semantics" but it is never explained.}
@@ -167,16 +168,16 @@ The partially implemented class concept is very similar to the default methods i
 \end{response}
 
 \begin{response}{the additional features seem relevant, but they are not described. Either the authors describe them a bit more or they remove the section.}
-  Response to n-ieme comment.
+Describing the additional features would require quite a bit of text and the risk of taking the focus of the reader away from the main features of the framework. We have thus decided to keep the section short but alleviate the problem pointed out by the reviewer by adding a link to the PAMELA web site where all these additional features are listed and extensively described.
 \end{response}
 
 
 \begin{response}{in section 3.4 it is not clear who writes what and at which step of the development process.}
-  Response to n-ieme comment.
+With respect to Listing 1 and 2, everything is written by the user which uses default PAMELA annotations so that the models it is defining (together with the code) may be created and manipulated directly (i.e., without the need for providing implementation for common tasks like model instance creation or attribute access). It is then the PAMELA interpreter that takes care of providing this aforementioned default behavior (in order to ease the discussion, Section 3.4. has been enriched with links to the Figure 2 where the PAMELA approach is depicted). Finally, the end of Section 3 shows how the user may write custom code that would replace the default behavior provided by the PAMELA interpreter (see Listing 3).
 \end{response}
 
 \begin{response}{in section 5, the use of PAMELA in the two projects is not clear.}
-  Response to n-ieme comment.
+We have extended Section 5 in order to add details with respect to the usage of PAMELA. Notably, in Section 5.1. many details have been included describing how PAMELA is extensively used within the OpenFlexo tool for every aspect involving model entities, including graphical user interfaces. Additionally, we report on how integrating PAMELA in OpenFlexo helped reducing code duplication and eliminating bugs.
 \end{response}
 
 \begin{response}{references are missing. For example Kermeta done, Platypus (from Alain Plantec), work of Glenn Cavarle and others from the model @runtime community.}
@@ -184,11 +185,15 @@ We have extended the related work section in order to discuss the suggested rela
 \end{response}
 
 
-\begin{response}{in section 6, the authors write: "PAMELA does not focus in reflecting and manipulating running systems but in: 1) extending their behaviours; and 2) maintaining a continuous cycle of metamodeling... These two points are not clear previously in the paper.
+\begin{response}{in section 6, the authors write: "PAMELA does not focus in reflecting and manipulating running systems but in: 1) extending their behaviors; and 2) maintaining a continuous cycle of metamodeling... These two points are not clear previously in the paper.
 }
 We have removed that part as it was indeed misleading and not discussed in that form previously in the paper. We have rephrased as follows:
 
 PAMELA is not focused on adapting or observing ever running programs (although it can be used for the verification of runtime properties as demonstrated in [20]) but on:  1) providing a mechanism to blend coding and metamodeling so that the code and the metamodel  may  be  built  incrementally  without  the  need  for  code  generation and thus,  avoiding round-tripping issues;  and 2) providing default implementations for frequently used abstractions in order to ease development.
+\end{response}
+
+\begin{response}{Minor remarks}
+We have fixed all minor remarks.
 \end{response}
 
 
@@ -201,7 +206,7 @@ Thanks for pointing this out. We have modified the latex settings so that this l
 \begin{response}{Installation
 The readme of the GitHub page should link to the installation page found in https://pamela.openflexo.org. It is unclear we must visit this web site to install the tool.
 }
-  Response to n-ieme comment.
+Thanks again. We completely agree. We have included a link to the PAMELA web site in the readme of the GitHub repository.
 \end{response}
 
 \begin{response}{
@@ -219,7 +224,7 @@ Else, the example works.
 
 
 }
-  Response to n-ieme comment.
+We had indeed overlooked the bug on line 9. Thanks for pointing it out. We have removed that line from the listing.
 \end{response}
 
 
