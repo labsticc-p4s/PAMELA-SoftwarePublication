@@ -1,4 +1,4 @@
-PAMELA is composed of one design time component (the PAMELA metamodel, plus a number of predefined annotations) presented in the next section and one run-time component (the PAMELA interpreter), described in the section \ref{sub:RunTime}.
+PAMELA is composed of one design time component (the PAMELA metamodel, plus a number of predefined annotations) presented in the next section and one runtime component (the PAMELA interpreter), described in the section \ref{sub:RunTime}.
 
 %\subsection{Installation}
 %\label{sub:installation}
@@ -73,7 +73,7 @@ In the following we list the most common Java annotations used in the context of
  \subsection{Runtime}
  \label{sub:RunTime}
  
- The aforementioned models are executed at runtime as a combination of two components: 1) plain Java byte-code, as the result of the basic compilation of source code; and 2) an embedded PAMELA interpreter, executing semantics reflected by \emph{ModelEntity} and \emph{ModelProperty}  declarations (together with custom annotations where available).
+ The aforementioned models are executed at runtime as a combination of two components as illustrated by  the right part of Figure~\ref{fig:PamelaVision}: 1) plain Java bytecode, as the result of the basic compilation of source code; and 2) an embedded PAMELA interpreter, executing semantics reflected by \emph{ModelEntity} and \emph{ModelProperty}  declarations (together with custom annotations where available).
 
 The main idea for the approach is to override Java dynamic binding. Invoking a method on an object which is part of a PAMELA model, causes the real implementation to be called when existing (more precisely dispatch code execution between all provided implementations), or the required interpretation according to the underlying model to be executed. 
  
@@ -83,7 +83,7 @@ The PAMELA interpreter will intercept any method call for all instances of \emph
      \item If the accessed method is defined in a class declared as implementation, or in a class declared as partial implementation, then this method is executed. The PAMELA API through the \mytexttt{AccessibleProxyObject} interface also provides access to generic behavior (super implementation), allowing the developer to define an overriding composition.
  \end{itemize}
  
-This general scheme provides also an extension point allowing to instrument the code. This extension point is used in order to integrate other features such as notification management, undo/redo stack management, assertion checking at run-time (support for \emph{Design by Contract}, aka JML), and dynamic code weaving in the context of \emph{Aspect Programming}.
+This general scheme provides also an extension point allowing to instrument the code. This extension point is used in order to integrate other features such as notification management, undo/redo stack management, assertion checking at runtime (support for \emph{Design by Contract}, aka JML), and dynamic code weaving in the context of \emph{Aspect Programming}.
 
 PAMELA model at runtime is computed dynamically, working on the classpath of
 launched Java application, and starting from a simple Java interface (or a
@@ -204,7 +204,7 @@ myLibrary.addToBooks(anOtherBook);
  %   \label{fig:ExecutingPamelaModel}
 %\end{figure}
 
-The lines 3--4 instantiates a \texttt{ModelContext} by introspecting and computing the closure of concepts graph obtained while starting from \texttt{Library} entity and following \texttt{parentEntities} and \texttt{properties} relationships. This call builds at runtime a \emph{PAMELAModel}, while dynamically following links reflected by compiled byte-code. A factory \texttt{ModelFactory} is then instantiated using that \texttt{ModelContext}, allowing to create \emph{Library} and \emph{Book} instances.
+The lines 3--4 instantiates a \texttt{ModelContext} by introspecting and computing the closure of concepts graph obtained while starting from \texttt{Library} entity and following \texttt{parentEntities} and \texttt{properties} relationships. This call builds at runtime a \emph{PAMELAModel}, while dynamically following links reflected by compiled bytecode. A factory \texttt{ModelFactory} is then instantiated using that \texttt{ModelContext}, allowing to create \emph{Library} and \emph{Book} instances.
 
 Custom code can be easily added to this model as we show in Listing \ref{lst:custom}. It shows how to integrate custom code to the fully interpreted \emph{Book} entity described above. The partial custom implementation is offered by a partial class (note the \texttt{abstract} keyword), declared in the annotation header of model entity. Custom implementations are defined using classical Java implementation/overrides scheme. Here we define the implementation of the \texttt{read()} method, which has no annotation (and thus, can not be processed by the PAMELA framework), and also the implementation of a custom getter for \emph{title}, returning a default value when no value is defined for that property. Note that this implementation references a default interpretated implementation (call to \texttt{performSuperGetter(String)} method).
 
