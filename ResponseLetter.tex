@@ -102,7 +102,11 @@ PAMELA have been thoroughly tested. The core PAMELA implementation is accompaine
 \end{response}
 
 \begin{response}{p10 l32+: very little detail or quantification on the tool's code base. Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?}
-  Response to n-ieme comment.
+The new Section 4.3. provides details about the PAMELA code base.
+\end{response}
+
+\begin{response}{Detailed comments}
+We have fixed all the issued highlighted in the detailed comments.
 \end{response}
 
 \ToolComments{\#1}
@@ -114,7 +118,7 @@ We apologize for the inconvenience. We have replaced "git clone git@github.com:o
 \end{response}
 
 \begin{response}{how to actually build the environment is not stated for this option.}
-  Response to n-ieme comment.
+We apologize for the inconvenience. The PAMELA documentation and web site have been updated in order to solve the problem.
 \end{response}
 
 \begin{response}{Run tests Unit tests located in src/test/java in pamela-core are a good starting point to discover the framework." No further information is given. Apparently, the user has to figure out him/herself how to run the tests. Documentation is lacking here.
@@ -124,12 +128,12 @@ We apologize for the inconvenience. We have replaced "git clone git@github.com:o
 
 \begin{response}{Make your first model." And then what?
 }
-  Response to n-ieme comment.
+We have refactored the PAMELA documentation on the web site so that it redirects to the getting started guide.
 \end{response}
 
 \begin{response}{Summarizing: the *getting started* documentation is incomplete and certainly not suitable for getting started. The page "https://pamela.openflexo.org/SNAPSHOT/example.html" gives a basic example, but the relation between that and the getting started page is not made explicit, nor do the two in their current shape provide a user with a proper getting started, allowing him/her to at least (1) install the framework, (2) create a basic example, (3) use the framework with that basic example. This needs to be improved before an evaluation of the software can be completed.
 }
-  Response to n-ieme comment.
+We apologize again for the lack of clarity in the documentation. It has been refactored so that the starting point is clear and the reader is guided step by step to the realization/usage of a first model.
 \end{response}
 
 
@@ -137,16 +141,17 @@ We apologize for the inconvenience. We have replaced "git clone git@github.com:o
 
 \Reviewer{\#2}
 \begin{response}{scenarios are missing. As a developer I don't know in which cases it is relevant to use this tool.}
-  Response to the first comment.
+We have rewritten Section 2 so that it includes now a list and brief description of typical usage scenarios for the PAMELA framework (e.g., coding-metamodeling blending, aspect-oriented programming or legacy code re-engineering). We also state that the standard PAMELA user will reuse existing annotation while more advanced users may become (meta) modelers and provide their own abstractions in a continous modeling approach. 
 \end{response}
 
 
 \begin{response}{how to use the tool is not describe properly. It is not clear if the developers need to write all the annotations. If an application is built with PAMELA, what is the link between the interfaces and the concrete classes. Indeed, at one point, code corresponding to the behaviour will be needed; and not only the accessors to navigate the structure of the model.}
-  Response to n-ieme comment.
+We have modified Section 2 to clarify that standard PAMELA users will reuse existing annotations which are accompanied with default implementations in the PAMELA interpreter. Additional details are given in Sections 3 and 4 (and in the online documentation: \url{https://pamela.openflexo.org/SNAPSHOT/pamela-core/3-metaprogramming_support.html}) See Listing 3 for an example of how the default implementation can be replaced by custom ones.
 \end{response}
 
 \begin{response}{how does such "code" evolve with time? Authors have used PAMELA for years, how such applications resist with time?}
-  Response to n-ieme comment.
+PAMELA helps factorizing code corresponding to recurrent concepts. In that sense its use does reduce the size and duplication of code, decreases the number of bugs and improves the code structure. All this makes final applications that use PAMELA (more) easily maintainable.
+We briefly discuss in Section 5.1. how integrating PAMELA in the OpenFlexo tool helped removing duplicated code and eliminating bugs in the latter.
 \end{response}
 
 \begin{response}{section 2 is too abstract to be very useful}
