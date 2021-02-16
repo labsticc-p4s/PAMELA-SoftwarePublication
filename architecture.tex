@@ -37,8 +37,8 @@ Note that \emph{ModelEntities} may declare \emph{ImplementationClasses}, which
 will be responsible for providing custom code implementing domain or
 application specific behaviour. A partially implemented \texttt{abstract} Java
 \texttt{class} may be defined as partial base implementation (conforms to
-implemented interface), \jcb{as default methods in Java interfaces would be
-(since Java 8).}
+implemented interface), as default methods in Java interfaces would be
+(since Java 8).
 
 A \texttt{ModelEntity} also defines some properties, encoded as \texttt{ModelProperty}. A \texttt{ModelProperty} is identified by a name, a cardinality (simple or multiple) and a type, which can be a reference to another \texttt{ModelEntity}, or a Java type (a primitive or an arbitrary complex Java type). Depending on its cardinality, a \texttt{ModelProperty} is bound to a set of methods reflecting use of property.
 \begin{itemize}
@@ -109,7 +109,7 @@ PAMELA instances (instances of \emph{ModelEntity}) are handled through the use o
 %    \item Strong coupling between model and code
 %    \item Strong typing is kept, and required checks are performed by the Java compiler
 %    \item PAMELA framework provides interpretation of model@runtime
-%    \item No need to generate POJO (plain old Java objects), as their
+%    \item No need to generate POJO (Plain Old Java Objects), as their
 %    execution follow the standard semantics (less code, fewer bugs)
 %    \item Custom implementation are provided if needed, using classical Java extension points
 %    \item It offers a way to intercept method calls and instrument the code
