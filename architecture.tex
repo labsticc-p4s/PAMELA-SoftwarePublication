@@ -30,7 +30,7 @@ PAMELA is composed of one design time component (the PAMELA metamodel, plus a nu
 \subsection{Design time}
 \label{sub:DesignTime}
 
-The PAMELA metamodel is depicted in Figure~\ref{fig:PamelaMetaModel}, and allows, though the use of annotations, the definition of \emph{simple} UML-like models directly on the code.
+The PAMELA metamodel is depicted in Figure~\ref{fig:PamelaMetaModel}, and allows, through the use of annotations, the definition of \emph{simple} UML-like models directly on the code.
 
 A \texttt{PAMELAModel} is defined as a set of references to \texttt{ModelEntity}. A \texttt{ModelEntity} reflects a concept and is encoded in a Java \texttt{interface}. PAMELA metamodel allows multiple inheritance: thus \texttt{ModelEntity} may define a set of parent entities. Note that reification of \texttt{ModelEntity} is performed in a Java \texttt{interface} (and not a class), which only defines API without any implementation for methods. 
 Note that \emph{ModelEntities} may declare \emph{ImplementationClasses}, which
