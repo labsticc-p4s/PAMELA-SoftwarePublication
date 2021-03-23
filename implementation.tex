@@ -2,13 +2,13 @@ The PAMELA implementation is available online\footnote {\url{https://github.com/
 
 \subsection{Exposed API at design time}
 
-The model-code integration we advocate requires facilities to encode metadata in the source code. This requires an annotation-enabled language. Such a language supports the attribute-oriented programming if its grammar allows adding custom declarative tags to annotate standard program elements. Java programming language is a good candidate, as it supports annotations.
+The model-code integration we advocate requires facilities to encode metadata in the source code. This requires an annotation-enabled language. Such a language supports the attribute-oriented programming if its grammar allows adding custom declarative tags to annotate standard program elements. The Java programming language is a good candidate, as it supports annotations.
 
-The PAMELA API exposed to the developer mainly consists of : 1) a set of annotations; and 2) a set of unimplemented Java interfaces exposing required features.
+The PAMELA API exposed to the developer mainly consists of: 1) a set of annotations; and 2) a set of unimplemented Java interfaces exposing required features.
 
-The package \texttt{org.openflexo.pamela.annotations} package exposes the set of annotations which were presented in Subsection \ref{sub:DesignTime}.
+The \texttt{org.openflexo.pamela.annotations} package exposes the set of annotations which were presented in Subsection \ref{sub:DesignTime}.
 
-The package \texttt{org.openflexo.pamela} contains the following feature-related Java interfaces:
+The \texttt{org.openflexo.pamela} package contains the following feature-related Java interfaces:
 \begin{itemize}
     \item \texttt{AccessibleProxyObject} is the interface that PAMELA objects should extend in order to benefit from base features such as generic default implementation, containment management, notification, object graph comparison and diff/merge, visiting patterns, etc.
     \item \texttt{CloneableProxyObject} exposes features related to cloning.
@@ -40,9 +40,9 @@ The PAMELA implementation is modularized.
 
 \subsection{On performance issues}
 
-Compared to a basic POJO (Plain Old Java Object) implementation, use of PAMELA involves a significant CPU and memory-footprint overhead, because of the partially-interpreted nature for some model features.
+Compared to a basic POJO implementation, use of PAMELA involves a significant CPU and memory-footprint overhead, because of the partially-interpreted nature for some model features.
 
-A workbench\footnote {\url{https://github.com/openflexo-team/pamela/tree/1.6.1/pamela-perf-tests}} has been developed to help measure that overhead. We use a base model composed of four entities defining 4 to 5 properties (single and multiple properties), and we instantiate that tree model (1010101 objects created and initialized to default value). From this simple model, two java implementations have been derived using code generation. The first implementation was made using fully implemented java classes (POJO), while the second one is fully interpreted (it uses the PAMELA framework and defines only interfaces and API methods). 
+A workbench\footnote {\url{https://github.com/openflexo-team/pamela/tree/1.6.1/pamela-perf-tests}} has been developed to help measure that overhead. We use a base model composed of four entities defining 4 to 5 properties (single and multiple properties), and we instantiate that tree model (1010101 objects created and initialized to default value). From this simple model, two Java implementations have been derived using code generation. The first implementation was made using fully implemented Java classes (POJO), while the second one is fully interpreted (it uses the PAMELA framework and defines only interfaces and API methods). 
 
 Unsurprisingly, we quantify a significant CPU overhead (from $\times$20). This is due to the fact that \texttt{MethodHandler} mechanism is fully interpreted and contains many hooks, and cannot be compared to a fully compiled and optimized Java dynamic binding. As well, memory footprint is increased from an 
 $\times$5 factor.

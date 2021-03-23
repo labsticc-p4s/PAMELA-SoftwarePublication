@@ -66,7 +66,7 @@ In the following we list the most common Java annotations used in the context of
     \item \texttt{@Finder(String,String)}: tag annotating method as a fetching request for a given \emph{ModelProperty} with a given attribute.
     \item \texttt{@CloningStrategy}: allows to customize cloning strategy for a given \emph{ModelProperty}.
     \item \texttt{@Embedded}: allows to declare a given \emph{ModelProperty} as
-      embedded. %according to PAMELA semantics.
+      embedded \todo{meaning?}. %according to PAMELA semantics.
     \item \texttt{@Imports} and \texttt{@Imports}: allows to declare some entities to be included in PAMELA model.
     \item \texttt{@XMLElement} and \texttt{@XMLAttribute}: used to specify XML serialization for PAMELA instances.
     
@@ -88,8 +88,8 @@ The PAMELA interpreter will intercept any method call for all instances of \emph
 This general scheme also provides an extension point allowing to instrument the code. This extension point is used in order to integrate other features such as notification management, undo/redo stack management, assertion checking at runtime (support for \emph{Design by Contract}, aka JML), and dynamic code weaving in the context of \emph{Aspect Programming}.
 
 The PAMELA model at runtime is computed dynamically, working on the classpath of
-launched Java application, and starting from a simple Java interface (or a
-collection of Java interfaces) which is/are PAMELA-annotated. From a
+the launched Java application, and starting from a simple Java interface (or a
+collection of Java interfaces) which is (are) PAMELA-annotated. From a
 mathematical point of view, internal representation of the underlying model is
 a graph whose vertices are PAMELA \emph{ModelEntities} (annotated Java
 interface), and edges are either inheritance links or reference links (a
@@ -129,7 +129,7 @@ support for \emph{design by contract} by integrating assertions from Java
 Modeling Language (JML), Metaprogramming, Aspect Oriented Programming. Each of
 those features is described on a dedicated page that is reachable from the
 official web site\footnote{\url{https://pamela.openflexo.org}}.
-Experimented programmers may extend PAMELA defining new annotations.
+Experienced PAMELA programmers may extend PAMELA defining new annotations.
 
 %A strong interest of the approach is that the model is encoded in Java, and must be compiled. It forces the Java compiler to perform required checks %for a PAMELA model encoded in a strong typed program. Execution semantics of model is fully compatible with Java semantics. Many validation rules %are automatically performed through classical Java compilation, independently of underlying PAMELA execution semantics.
 
@@ -186,7 +186,7 @@ The execution and the management of this model may be performed using the follow
 
 %\begin{figure}
 %    \centering
-\begin{lstlisting}[language=Java,basicstyle=\ttfamily\footnotesize, caption=model execution/manipulation, label=lst:execution]
+\begin{lstlisting}[language=Java,basicstyle=\ttfamily\footnotesize, caption=Model execution/manipulation, label=lst:execution]
 // Instantiate the meta-model
 // by computing the closure of concepts graph
 ModelContext modelContext 
@@ -197,7 +197,7 @@ ModelFactory factory  = new ModelFactory(modelContext);
 Library myLibrary = factory.newInstance(Library.class);
 // Instantiate some Books
 Book myFirstBook 
-    = factory.newInstance(Book.class, "Lord of the ring");
+    = factory.newInstance(Book.class, "Lord of the rings");
 Book anOtherBook = factory.newInstance(Book.class, "Holy bible");
 myLibrary.addToBooks(myFirstBook);
 myLibrary.addToBooks(anOtherBook);
@@ -208,7 +208,7 @@ myLibrary.addToBooks(anOtherBook);
 
 The lines 3--4 instantiate a \texttt{ModelContext} by introspecting and computing the closure of concepts graph obtained while starting from \texttt{Library} entity and following \texttt{parentEntities} and \texttt{properties} relationships. This call builds at runtime a \emph{PAMELAModel}, while dynamically following links reflected by compiled bytecode. A factory \texttt{ModelFactory} is then instantiated using that \texttt{ModelContext}, allowing to create \emph{Library} and \emph{Book} instances.
 
-Custom code can be easily added to this model as we show in Listing~\ref{lst:custom}. It shows how to integrate custom code to the fully interpreted \emph{Book} entity described above. The partial custom implementation is offered by a partial class (note the \texttt{abstract} keyword), declared in the annotation header of model entity. Custom implementations are defined using classical Java implementation/overrides scheme. Here we define the implementation of the \texttt{read()} method, which has no annotation (and thus, cannot be processed by the PAMELA framework), and also the implementation of a custom getter for \emph{title}, returning a default value when no value is defined for that property. Note that this implementation references a default interpreted implementation (call to \texttt{performSuperGetter(String)} method).
+Custom code can be easily added to this model as we show in Listing~\ref{lst:custom}. It shows how to integrate custom code to the fully interpreted \emph{Book} entity described above. The partial custom implementation is offered by a partial class (note the \texttt{abstract} keyword), declared in the annotation header of model entity. Custom implementations are defined using classical Java implementation/override schemes. Here we define the implementation of the \texttt{read()} method, which has no annotation (and thus, cannot be processed by the PAMELA framework), and also the implementation of a custom getter for \emph{title}, returning a default value when no value is defined for that property. Note that this implementation references a default interpreted implementation (call to \texttt{performSuperGetter(String)} method).
 
 %\begin{figure}
 %    \centering
