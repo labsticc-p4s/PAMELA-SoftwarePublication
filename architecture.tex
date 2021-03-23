@@ -32,26 +32,28 @@ PAMELA is composed of one design time component (the PAMELA metamodel, plus a nu
 
 The PAMELA metamodel is depicted in Figure~\ref{fig:PamelaMetaModel}, and allows, through the use of annotations, the definition of \emph{simple} UML-like models directly on the code.
 
-A \texttt{PAMELAModel} is defined as a set of references to \texttt{ModelEntity}. A \texttt{ModelEntity} reflects a concept and is encoded in a Java \texttt{interface}. PAMELA metamodel allows multiple inheritance: thus \texttt{ModelEntity} may define a set of parent entities. Note that reification of \texttt{ModelEntity} is performed in a Java \texttt{interface} (and not a class), which only defines API without any implementation for methods. 
+A \texttt{PAMELAModel} is defined as a set of references to \texttt{ModelEntity}. A \texttt{Model\-Entity} reflects a concept and is encoded in a Java \texttt{interface}. 
+Then, a \texttt{Model\-Entity} only defines an API (Application Programming Interface) without any implementation for methods. 
 Note that \emph{ModelEntities} may declare \emph{ImplementationClasses}, which
 will be responsible for providing custom code implementing domain or
 application-specific behavior. A partially implemented \texttt{abstract} Java
 \texttt{class} may be defined as partial base implementation (conforms to
 implemented interface), as default methods in Java interfaces would be
 (since Java 8).
+The PAMELA metamodel allows multiple inheritance: thus \texttt{ModelEntity} may define a set of parent entities. 
 
 A \texttt{ModelEntity} also defines some properties, encoded as \texttt{ModelProperty}. A \texttt{ModelProperty} is identified by a name, a cardinality (simple or multiple) and a type, which can be a reference to another \texttt{ModelEntity}, or a Java type (a primitive or an arbitrary complex Java type). Depending on its cardinality, a \texttt{ModelProperty} is bound to a set of methods reflecting use of property.
 \begin{itemize}
-    \item A \emph{read-only single property} will define read access of its value using a \emph{getter} (a Java method defined in Java interface taking no argument and returning desired value).
-    \item A \emph{read-write single property} will define a \emph{getter} and a \emph{setter} (a Java method taking value to be set as unique argument).
-    \item A \emph{read-write multiple property} will define a \emph{getter}, an \emph{adder} (a Java method taking value to be added as unique argument), a \emph{remover} (a Java method taking value to be removed as unique argument), and may define additional methods for extended features such as re-indexing, for example.
+    \item A \emph{read-only single property} will define read access of its value using a \emph{getter} (a Java method defined in Java interface taking no argument and returning the desired value).
+    \item A \emph{read-write single property} will define a \emph{getter} and a \emph{setter} (a Java method taking the value to be set as unique argument).
+    \item A \emph{read-write multiple property} will define a \emph{getter}, an \emph{adder} (a Java method taking the value to be added as unique argument), a \emph{remover} (a Java method taking the value to be removed as unique argument), and may define additional methods for extended features such as re-indexing, for example.
 \end{itemize}
 
 
 In the following we list the most common Java annotations used in the context of \texttt{ModelEntity} and \texttt{ModelProperty} definitions:
 
 \begin{itemize}
-    \item \texttt{@ModelEntity}: tag annotating \texttt{interface} as \emph{ModelEntity}. May declare an abstract entity.
+    \item \texttt{@ModelEntity}: tag annotating \texttt{interface} as \emph{ModelEntity}. May also declare an abstract entity.
     \item \texttt{@ImplementationClass}: tag annotating \emph{ModelEntity} \texttt{interface} and precising abstract Java \texttt{class} to be used as base implementation.
     \item \texttt{@Implementation}: tag annotating a partial implementation (abstract inner \texttt{class} defined in implemented \texttt{interface}), and used in the context of multiple inheritance.
     \item \texttt{@Getter(String)}: tag annotating method as unique getter for implicit \emph{ModelProperty} whose identifier is the declared String value. May also declares cardinality, eventual inverse property, default value and some other features.
