@@ -37,7 +37,7 @@ infrastructure. More than 15 technology adapters have been developed, with
 various maturity stage regarding their industrialization (Microsoft Word, Excel
 and PowerPoint, EMF, OWL, Diagraming, JDBC, XML, OSLC, etc.)
 
-The full Openflexo infrastructure is composed of about 50 components. In most components, the PAMELA framework is extensively used. As an example the \texttt{diana} component\footnote{\url{https://diana.openflexo.org}} (a component providing diagraming features) is composed of 998 classes. 159 of those classes (mostly the diagraming model) are defined as Pamela \texttt{ModelEntity}. 
+The full Openflexo infrastructure is composed of about 50 components. In most components, the PAMELA framework is largely used. As an example the \texttt{diana} component\footnote{\url{https://diana.openflexo.org}} (a component providing diagraming features) is composed of 998 classes. 159 of those classes (mostly the diagraming model) are defined as Pamela \texttt{ModelEntity}. 
 
 The total base of code for Openflexo infrastructure represents around
 \num{900000} lines of Java code. Regarding backend modeling, the PAMELA
@@ -48,7 +48,7 @@ which also rely on the PAMELA framework.
 
 An interesting experiment has been done in the context of Openflexo development process. When PAMELA was integrated to the code base, a big portion of the former legacy code has gradually and iteratively been migrated to PAMELA. Refactoring mainly consisted in removing code, and replacing method implementation by API method declaration. In some parts of core model implementation, code has been reduced by 80\% (in terms of lines of Java code), and many bugs disappeared, as they were caused by programming errors.
 
-The PAMELA implementation is now really stable and mature. According to Openflexo infrastructure developers, maintenance of code base (about 10 years of development) raises no PAMELA-specific issue, while co-evolution of models and code is greatly improved compared to a "code generation"-based solution.
+The PAMELA implementation is now really stable and mature. According to Openflexo infrastructure developers, maintenance of code base (about 10 years of development) raises no PAMELA-specific issue, while co-evolution of models and code is greatly improved compared to a 'code generation'-based solution.
 
 % Continuous integration ?
 
