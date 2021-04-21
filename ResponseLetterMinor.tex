@@ -1,4 +1,4 @@
- Title:    A LaTeX Template For Responses To a Referees' Reports
+% Title:    A LaTeX Template For Responses To a Referees' Reports
 % Author:   Petr Zemek <s3rvac@gmail.com>
 % Homepage: https://blog.petrzemek.net/2016/07/17/latex-template-for-responses-to-referees-reports/
 % License:  CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
@@ -77,28 +77,70 @@ Sylvain, Guillaume, Caine, Joel, Jean-Christophe, Salvador, Fabien and Antoine
 
 \Reviewer{\#1}
 \begin{response}{There remain or are introduced however, a substantial number of typos, language errors, and other minor issues that need correcting:} 
+
 All highlighted typos, languages errors and minor issues have been fixed.
+
+\begin{itemize}
+
+\item "to /avoid" on p3 (DONE)
+\item "detailed thereafter" $->$ "detailed hereafter" (It's Correct : As adverbs the difference between hereafter and thereafter is that hereafter is in time to come; in some future time or state while thereafter is after that, from then on.)
+\item "increasing PAMELA metamodel" $->$ "by \_extending\_ PAMELA\_'s\_ metamodel" (DONE)
+\item "with setter/getter": make both plural (DONE)
+\item POJO used here and elsewhere yet the acronym is introduced much later (DONE)
+\item p4 l11-12: reduce etc. should be reduce\_s\_ etc. (Keep as it is)
+\item odd spacing before : consistently throughout bullet list + text  (Keep as it is: trust Latex)
+\item "in the section 3.2" $->$ "in Section 3.2" (style: named references deserve a capital and no article before) (DONE)
+\item p5 and many times: "PAMELA metamodel", "PAMELA model", "PAMELA framework" need "the" before them. (Done ; with Pamela $->$ PAMELA)
+\item "defines API": insert "an" (DONE)
+\item "in Java interface": insert "a" (DONE)
+\item "returning desired value", "taking value" etc.: insert "the" (DONE)
+\item "May also declares"... (DONE)
+\item p6 l46: @Embedded/"as embedded" meaning?
+\item p7 "of launched Java application" missing "the" (DONE)
+\item "is/are" $->$ "is (are)", in line with parentheses earlier in sentence (DONE)
+\item "Experimented programmers": I doubt it, unless you got major ethical clearance (Replaced by "Experienced PAMELA programmers")
+\item "Listing 2: model" $->$ "~: Model" consistent with Listing 1 (DONE)
+\item the book title is "Lord of the ring\_s\_" with s (DONE)
+\item "using classical Java ... scheme": missing "the" (DONE)
+\item "Java programming language": insert "The" (DONE)
+\item l43 inconsistent spacing (DONE)
+\item l46 package ... package (DONE)
+\item p11 l36 sticking into margin (Final check to do)
+\item S.4.3 please add size in LoC and classes (?)
+\item java $->$ Java (DONE)
+\item p13 "diana component": insert "the" (DONE)
+\item "experimentation" $->$ "experiment" (DONE)
+\item "When Pamela has been" $->$ "After Pamela was" (DONE : if we consider it's over)
+\item l36 the quotation mark before code generation is the wrong one 'changed to ' and ' ?)
+\item p 14 "appertaining" $->$ "pertaining", "relating" (Kept as is. As verbs the difference between pertain and appertain is that pertain is to belong while appertain is to belong to or be a part of, whether by right, nature, appointment, or custom; to relate to.)
+\end{itemize}
+
 \end{response}
 
 \pagebreak
 
 \Reviewer{\#2}
 \begin{response}{Would it be possible to structure it more, because currently it is several paragraphs the one bellow the others.}
-We will probably do something...
+
+Section 2 has been decomposed into 2 subsections
+
 \end{response}
 
 
 \begin{response}{figure 2 is not enough described in section 2 and even in the paper.}
-We have removed figure 2 ;) haha!
+
+The end of 2.1 subsection provides an explanation of figure 2.
+
 \end{response}
 
 \begin{response}{More over, concerning section 4.4, I appreciate this new section. However, while reading, it is not a good advertisement for Pamela. Overhead (x20) is huge. Perhaps it is not the right benchmark if it provides bad results that are not representing the right usage.}
-We totally agree...
+
+SM comments
+
 \end{response}
 
 \begin{response}{Minors}
 We have fixed all the highlighted minor issues.
 \end{response}
-
 
 \end{document}

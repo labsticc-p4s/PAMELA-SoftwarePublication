@@ -1,4 +1,9 @@
-We advocate for a strong coupling between model and sources code, to give architects and developers a way to both interact during the whole development cycle. PAMELA is an annotation-based Java modeling framework providing a smooth integration between model and code, without code generation nor externalized model serialization. Instead of generating the code, the API (mostly Java interfaces with abstract method declarations) is locally executed (interpreted). The idea is to avoid separation between modeling and code to facilitate consistency management and to avoid round-trip issues. Figure \ref{fig:PamelaVision} summarizes the PAMELA architecture and is more detailed thereafter.  
+We advocate for a strong coupling between model and sources code, to give architects and developers a way to both interact during the whole development cycle. 
+
+\subsection{Architecture overview}
+
+PAMELA is an annotation-based Java modeling framework providing a smooth integration between model and code, without code generation nor externalized model serialization. Instead of generating the code, the API (mostly Java interfaces with abstract method declarations) is locally executed (interpreted). The idea is to avoid separation between modeling and code to facilitate consistency management and to avoid round-trip issues. Figure \ref{fig:PamelaVision} summarizes the PAMELA architecture.
+The left side shows the structure of the application source code where java files contain the code and annotations that link part of the code to PAMELA model entities such as class, attribute, method, etc. The right side shows that at runtime the PAMELA interpreter maintains the relationships between the application binary, result of the java compilation, and the internal representation of PAMELA models. The preservation of the structure and of the whole information allow a very good and high level of control over the execution. In the following section, we present some indications on the different ways of programming using PAMELA.
 
 \begin{figure}
     \centering
@@ -8,6 +13,7 @@ We advocate for a strong coupling between model and sources code, to give archit
 \end{figure}
 
 %\subsection{PAMELA Modeling/Development Process}
+\subsection{Usage of PAMELA}
 
 Coupling model and code into the same artifact opens new ways of programming. The classical (metadata enabled) programming process relies on \emph{programmers} that produce code reusing pre-existing modeling concepts. These concepts are implemented by \emph{modelers} that provide the right annotations the programmers use. This is, for instance, the process followed by Jakarta EE (JEE) developers reusing JEE specific annotations. 
 % Joel : une ref pour Jakarta ?
