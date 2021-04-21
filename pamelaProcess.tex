@@ -9,11 +9,13 @@ We advocate for a strong coupling between model and sources code, to give archit
 
 %\subsection{PAMELA Modeling/Development Process}
 
-Coupling model and code into the same artifact opens new ways of programming. The classical (metadata enabled) programming process relies on \emph{programmers} that produce code reusing pre-existing modeling concepts. These concepts are implemented by \emph{modelers} that provide the right annotations the programmers use. This is, for instance, the process followed by Jakarta EE (JEE) developers reusing JEE specific annotations. The evolution rhythm between models and code is low. This programming way is still possible with PAMELA, but we allow the ability to reach a high evolution rhythm when the programmer also becomes the modeler. In fact, when the programmer identifies a pattern, an abstraction, a generalization, s/he can use PAMELA to develop and capitalize on this abstraction by extending PAMELA's metamodel. 
-
+Coupling model and code into the same artifact opens new ways of programming. The classical (metadata enabled) programming process relies on \emph{programmers} that produce code reusing pre-existing modeling concepts. These concepts are implemented by \emph{modelers} that provide the right annotations the programmers use. This is, for instance, the process followed by Jakarta EE (JEE) developers reusing JEE specific annotations. 
+% Joel : une ref pour Jakarta ?
+The evolution rhythm between models and code is low. This programming way is still possible with PAMELA, but we allow the ability to reach a high evolution rhythm when the programmer also becomes the modeler. In fact, when the programmer identifies a pattern, an abstraction, a generalization, s/he can use PAMELA to develop and capitalize on this abstraction by extending PAMELA's metamodel. 
+% Joel : le MM de Pamela n'est pas étendu en tant que tel (=M3) c'est le niveau M2 qui étendu ??? mais la bibliothèque de metamodèles est étendue ??? donc juste mettre PAMELA's metamodels. ????
 % Je pense qu'ici il faudrait plutot parler du modèle. Le métamodèle PAMELA est celui représenté figure 3. Ou alors parler du metametamodele PAMELA
 
-The developed metamodels are implemented by annotations that rely on Java/JVM entities and mechanisms. They include consistency checking, which constrain their use and helps the programmer to avoid inconsistencies or errors. We have first experimented their use with setters/getters to define Plain Old Java Objects (POJO), with traits to implement multiple inheritance or with roles and rules to set security rules on classes.
+The developed metamodels are implemented by annotations that rely on Java/JVM entities and mechanisms. They include consistency checking, which constrain their use and help the programmer to avoid inconsistencies or errors. We have first experimented their use with setters/getters to define Plain Old Java Objects (POJO), with traits to implement multiple inheritance or with roles and rules to set security rules on classes.
 
 Our experience shows that introducing and reusing new concepts (1) reduce the size of the code (2) reduce the risk of errors and (3) improve the code structure. The cycle of development between the model and the code can then be drastically reduced, leading to what we call \emph{continuous modeling}.
 

@@ -1,0 +1,104 @@
+ Title:    A LaTeX Template For Responses To a Referees' Reports
+% Author:   Petr Zemek <s3rvac@gmail.com>
+% Homepage: https://blog.petrzemek.net/2016/07/17/latex-template-for-responses-to-referees-reports/
+% License:  CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+\documentclass[10pt]{article}
+
+% Allow Unicode input (alternatively, you can use XeLaTeX or LuaLaTeX)
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{todonotes}
+
+\usepackage{microtype,xparse,tcolorbox}
+\newenvironment{reviewer-comment }{}{}
+\tcbuselibrary{skins}
+\tcolorboxenvironment{reviewer-comment }{empty,
+  left = 1em, top = 1ex, bottom = 1ex,
+  borderline west = {2pt} {0pt} {black!20},
+}
+\ExplSyntaxOn
+\NewDocumentEnvironment {response} { +m O{black!20} } {
+  \IfValueT {#1} {
+    \begin{reviewer-comment~ }
+      \setlength\parindent{2em}
+      \noindent
+      \ttfamily #1
+    \end{reviewer-comment~ }
+  }
+  \par\noindent\ignorespaces\color{blue}
+} { \bigskip\par }
+
+\NewDocumentCommand \Reviewer { m } {
+  \section*{Comments~by~Reviewer~#1}
+}
+
+\NewDocumentCommand \ToolComments { m } {
+  \section*{Tool~Comments~by~Reviewer~#1}
+}
+
+\ExplSyntaxOff
+\AtBeginDocument{\maketitle\thispagestyle{empty}\noindent}
+
+% You can get probably get rid of these definitions:
+\newcommand\meta[1]{$\langle\hbox{#1}\rangle$}
+\newcommand\PaperTitle[1]{``\textit{#1}''}
+
+\title{Response letter to Manuscript SCICO-D-20-00176R1 entitled "PAMELA: an Annotation-Based Java Modeling Framework"}
+%\author{Author1 \and Author2 \and Author3}
+\date{\today}
+
+\begin{document}
+
+Dear Editor,
+
+\bigskip
+Thanks for your message of Mars 15th, 2021, in which you suggested preparing a minor revision of our manuscript  \textbf{PAMELA: an Annotation-Based Java Modeling Framework}. 
+
+\bigskip
+We are grateful to the reviewers for their interest, effort, and suggestions. We detail in the following pages how we have addressed the reviewers' concerns;  We have organized the responses to the comments on a per-reviewer basis, focusing, as suggested, on: 
+
+\begin{itemize}
+\item Fixing typos, language errors, and other minor issues.
+\item Refactoring Section 2.
+\item Provide further explanations with respect to the performance of the approach.
+\end{itemize}
+
+Moreover, the paper has been thoroughly revised to fix minor issues and to give the additional clarifications required by the reviewers. Please let us know if you need any further information or clarification.
+
+\bigskip
+Sincerely yours,
+
+\bigskip
+Sylvain, Guillaume, Caine, Joel, Jean-Christophe, Salvador, Fabien and Antoine
+
+\pagebreak
+
+
+\Reviewer{\#1}
+\begin{response}{There remain or are introduced however, a substantial number of typos, language errors, and other minor issues that need correcting:} 
+All highlighted typos, languages errors and minor issues have been fixed.
+\end{response}
+
+\pagebreak
+
+\Reviewer{\#2}
+\begin{response}{Would it be possible to structure it more, because currently it is several paragraphs the one bellow the others.}
+We will probably do something...
+\end{response}
+
+
+\begin{response}{figure 2 is not enough described in section 2 and even in the paper.}
+We have removed figure 2 ;) haha!
+\end{response}
+
+\begin{response}{More over, concerning section 4.4, I appreciate this new section. However, while reading, it is not a good advertisement for Pamela. Overhead (x20) is huge. Perhaps it is not the right benchmark if it provides bad results that are not representing the right usage.}
+We totally agree...
+\end{response}
+
+\begin{response}{Minors}
+We have fixed all the highlighted minor issues.
+\end{response}
+
+
+\end{document}
