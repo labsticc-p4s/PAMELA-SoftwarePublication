@@ -122,20 +122,23 @@ All highlighted typos, languages errors and minor issues have been checked and f
 \Reviewer{\#2}
 \begin{response}{Would it be possible to structure it more, because currently it is several paragraphs the one bellow the others.}
 
-Section 2 has been decomposed into 2 subsections
+Section 2 has been decomposed into two Subsections: Subsection 2.1.  Architecture overview
+and Subsection 2.2.  Usage of PAMELA.
 
 \end{response}
 
 
 \begin{response}{figure 2 is not enough described in section 2 and even in the paper.}
 
-The end of 2.1 subsection provides an explanation of figure 2.
+The end of Subsection 2.1 provides now a full explanation of figure 2.
 
 \end{response}
 
 \begin{response}{More over, concerning section 4.4, I appreciate this new section. However, while reading, it is not a good advertisement for Pamela. Overhead (x20) is huge. Perhaps it is not the right benchmark if it provides bad results that are not representing the right usage.}
 
-SM comments
+We agree with the reviewer that the overhead may seem huge. Note, however, that these measures correspond to the very worst-case scenario: an application with absolutely no business logic. Although such applications do not correspond to the normal usage, we believe showing this measurement is important to fully characterize the performance of the approach. E.g., PAMELA should not be used when the application is a mere data structure.
+
+For normal applications, the time passed on attribute accessors is negligible compared to the time spent on business logic. We have verified this by using a profiling tool on PAMELA based applications (we have added this information to the paper). Moreover, as we show in Section 5 PAMELA has been successfully applied to many industrial projects, with no performance issues reported. 
 
 \end{response}
 
