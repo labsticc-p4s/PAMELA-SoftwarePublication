@@ -12,8 +12,10 @@ letter:
 	$(LATEXCMD) $(TEXFILE1)
 
 clean:
-	rm -Rf *.log *.aux *~ *.toc *.brf *.bbl *.blg *.ps *.fdb_latexmk \
-	*.nav *.out *.snm *.vrb *.pag auto *.maf *.mtc *.mtc0 *.fls *.synctex.gz
+	$(LATEXCMD) -c
+	#rm -Rf *.log *.aux *~ *.toc *.brf *.bbl *.blg *.ps *.fdb_latexmk \
+	#*.nav *.out *.snm *.vrb *.pag auto *.maf *.mtc *.mtc0 *.fls *.synctex.gz
 
 clean.all: clean
-	rm -f $(TEXFILE).{pdf,dvi}
+	$(LATEXCMD) -C
+	#rm -f $(TEXFILE).{pdf,dvi}
