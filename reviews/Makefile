@@ -1,10 +1,10 @@
-TEXFILE=main
+TEXFILE=responseLetter
 
 LATEXCMD=latexmk -f --synctex=1 -pdf
 
-all: main
+all: letter 
 
-main: 
+letter:
 	$(LATEXCMD) $(TEXFILE)
 
 clean:
@@ -12,4 +12,3 @@ clean:
 
 clean.all: clean
 	$(LATEXCMD) -C
-	rm -f main.bbl main.spl
