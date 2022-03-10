@@ -1,0 +1,48 @@
+Reviewer #1: The paper
+=====
+
+Describes the PAMELA framework, for model-based Java development, based on annotating Java classes and using the framework with its interpreter.
+
+The authors discuss the advantages of this approach to code generation based approaches, and give an overview with a small toy example (Books + Library) of the framework's use.
+
+They then briefly discuss implementation details, in a single page; and then discuss 'industrial use cases and experiments'.
+
+Unfortunately, the latter leaves much to be desired, as much of the text is spent on the context/tools in which the tool was used, but not on how it was used, nor with any quantification on how extensive its use was, or what the performance of the resulting constellation is.
+
+Also lacking is a more thorough comparison to existing work; your related work section gives a very shallow comparison to other approaches.
+
+What would also be interesting is a general discussion on performance of your tool, gains by using your tool, ...
+
+Your reference list is incomplete and inconsistent. Formod or Formosa? When were URLs accessed (add date). DOIs are missing. Ref. 5 should have the ISoLA track name and editors added. Ref. 7 is missing publisher, journal, conference. Inconsistent use of first names, first names + initials, first initial.
+
+Detailed comments:
+- The paper highlights include "Contract programming with assertions [remove the plural] checking at runtime", yet that is not mentioned in the paper at all.
+- "less bugs" -> "fewer bugs"
+- That also brings up the question: what about correctness of your code? Any evidence for that? Test coverage, ...?
+- I would urge to move overview Figure 2 to the introduction section.
+- The paper needs proofreading and the English needs checking and improvement, throughout. E.g. p3 l13-14; "becomes also" -> "also becomes"; singular vs. plural in enumeration p3 l28-30; "of of", and so on and so forth. The paper needs checking by a native writer.
+- java -> Java throughout the paper.
+- "enventual"...
+- bullet on page 6 all need a period at end
+- p7 l22 "On the contrary" To what?
+- "the link" Which link?
+- footnote p7 unclear. Remove, or into text and elaborate to make clear.
+- p8 l52-53: "The first line of code instantiates". Incorrect. Lines 3-4 do.
+- p10 l48: >1.5, or at least 1.5?
+- S.5.1 "Model Federation" needs a reference. So does SIMF RFP.
+- p10 l32+: very little detail or quantification on the tool's code base. Surely you can say more about its structure, size of components, ... other interesting and relevant observations on the codebase?
+- S.5.2 needs references for KAOS, OWL, PLIB, Event-B etc. etc.
+
+
+
+
+The software
+=====
+
+- I started with https://pamela.openflexo.org/SNAPSHOT/getting_started.html and opted for "3. Download and build PAMELA framework in your environment".
+- gives "git clone git@github.com:openflexo-team/pamela.git", which (even when using my own username) does not work. However, "git clone https://github.com/openflexo-team/pamela.git" immediately does. Why not state the latter?
+- how to actually build the environment is not stated for this option.
+- "4. Run tests Unit tests located in src/test/java in pamela-core are a good starting point to discover the framework." No further information is given. Apparently, the user has to figure out him/herself how to run the tests. Documentation is lacking here.
+- "5. Make your first model." And then what?
+
+Summarizing: the *getting started* documentation is incomplete and certainly not suitable for getting started. The page "https://pamela.openflexo.org/SNAPSHOT/example.html" gives a basic example, but the relation between that and the getting started page is not made explicit, nor do the two in their current shape provide a user with a proper getting started, allowing him/her to at least (1) install the framework, (2) create a basic example, (3) use the framework with that basic example. This needs to be improved before an evaluation of the software can be completed.

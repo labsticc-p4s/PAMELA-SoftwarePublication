@@ -1,0 +1,47 @@
+Reviewer #2: Summary:
+In this paper, the authors present PAMELA, a Java modelling framework based on annotation. It aims to remove the shift between the model and the code in the model-drive software development approach. In other words, code and model form only one.
+
+Strengths:
+- the purpose of the paper is relevant
+- the framework has been already used in academic and industrial projects.
+
+Weaknesses:
+- scenarios are missing. As a developer I don't know in which cases it is relevant to use this tool.
+- how to use the tool is not describe properly. It is not clear if the developers need to write all the annotations. If an application is built with PAMELA, what is the link between the interfaces and the concrete classes. Indeed, at one point, code corresponding to the behaviour will be needed; and not only the accessors to navigate the structure of the model.
+- how does such "code" evolve with time? Authors have used PAMELA for years, how such applications resist with time?
+
+Major remarks:
+- section 2 is too abstract to be very useful.
+- fig 2 is almost not described at least when it is referenced. It seems it is described in section 3.2
+- p6 "according to PAMELA semantics" but it is never explained.
+- the partially implemented class concept is not clear.
+- the additional features seem relevant, but they are not described. Either the authors describe them a bit more or they remove the section.
+- in section 3.4 it is not clear who writes what and at which step of the development process.
+- in section 5, the use of PAMELA in the two projects is not clear.
+- references are missing. For example Kermeta, Platipus (from Alain Plantec), work of Glenn Cavarle and others from the model @runtime community.
+- in section 6, the authors write: "PAMELA does not focus in reflecting and manipulating running systems but in: 1) extending their behaviours; and 2) maintaining a continuous cycle of metamodeling... These two points are not clear previously in the paper.
+
+Minor remarks:
+- p3 line 51 of of simple
+- p5 line 31 to summarise, but it is not a summary since the reader learns new things.
+- p7 line 21 ) missing
+- p12 line 38 a uniform and not an.
+
+
+Concerning the tool:
+- The link in the paper is not clickable and copy-and-paste does not work (because of latex?) Link found: https://github.com/openflexo-team/pamela
+
+Installation
+The readme of the GitHub page should link to the installation page found in https://pamela.openflexo.org. It is unclear we must visit this web site to install the tool.
+
+What I have done
+Create a new project in Intellij Idea with gradle
+Add the line found in https://pamela.openflexo.org/SNAPSHOT/getting_started.html
+- Test 1: Create a model with only one entity without error
+- Test 2: Create the example of the paper
+---> Bug: in Listing2, the authors execute Line9 ".setName" but the method does not exists
+Else, the example works.
+
+Implementation of a GUI meta-model
+Is it normal that we must throw ModelDefinitionException? Why not using an unchecked exception (such as runtime exception)?
+I had no problem to implement my model and, thanks to the documentation, I was able to add feature not presented in the paper (such as inverse property of the Getter).
